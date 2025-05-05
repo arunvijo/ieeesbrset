@@ -7,3 +7,29 @@
 *{
     font-family: Outfit;
 }
+
+
+/* Optional: Custom sizing if Tailwind's default isn't sufficient */
+.collage-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 1rem;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .small {
+    grid-row: span 1;
+    grid-column: span 1;
+  }
+  
+  .medium {
+    grid-row: span 2;
+    grid-column: span 2;
+  }
+  
+  .large {
+    grid-row: span 3;
+    grid-column: span 3;
+  }
+  

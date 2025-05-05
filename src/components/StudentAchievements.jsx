@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const StudentAchievements = () => {
   const images = [
@@ -11,18 +11,20 @@ const StudentAchievements = () => {
   ];
 
   return (
-    <div className='py-20 px-6 md:px-20 lg:px-32'>
-     <h2 className='text-4xl font-bold text-center mb-10'>Student <span className='text-blue-600'>Achievemnts</span></h2>
-      <p className='text-center text-gray-500 mb-12 max-w-xl mx-auto'>
+    <div className='py-20 px-6 md:px-20 lg:px-32 bg-white text-gray-900'>
+      <h2 className='text-4xl font-bold text-center mb-10'>
+        Student <span className='text-blue-600'>Achievements</span>
+      </h2>
+      <p className='text-center text-gray-600 mb-12 max-w-xl mx-auto'>
         Recognizing the outstanding contributions and accomplishments of our student members.
       </p>
       <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8'>
         {images.map((src, idx) => (
-          <img key={idx} src={src} alt={`Student Award ${idx + 1}`} className='rounded-lg shadow-md' />
+          <img key={idx} src={src} alt={`Student Award ${idx + 1}`} className='rounded-lg shadow-lg' />
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default StudentAchievements;

@@ -7,10 +7,10 @@ const Header = () => {
     <div className="relative" id="Header">
       <div
         className='min-h-screen bg-cover bg-center flex items-center justify-center relative'
-        style={{ backgroundImage: "url('/header_img.png')" }}
+        style={{ backgroundImage: "url('/header_img.jpeg')" }}
       >
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black bg-opacity-70 z-0"></div>
+        <div className="absolute inset-0 bg-black bg-opacity-80 z-0"></div>
 
         {/* Navbar */}
         <Navbar />

@@ -32,6 +32,14 @@ const Gallery = () => {
     return () => window.removeEventListener('resize', updateCardsToShow);
   }, []);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % events.length);
+    }, 3000); // Auto scroll every 3 seconds
+
+    return () => clearInterval(interval); // Cleanup on unmount
+  }, []);
+
   const nextProject = () => {
     setCurrentIndex((prevIndex) => (prevIndex + cardsToShow) % events.length);
   };
@@ -43,25 +51,23 @@ const Gallery = () => {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, x: -200 }}
-      transition={{ duration: 1 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
-      className='container mx-auto px-6 md:px-16 lg:px-24 py-20 w-full'
+    <div
+      className='container mx-auto px-6 md:px-16 lg:px-24 py-20 w-full bg-white text-gray-900'
       id='Gallery'
     >
-      <h2 className='text-4xl font-bold text-center mb-10'>Event <span className='text-blue-600'>Gallery</span></h2>
-      <p className='text-gray-500 text-center mb-10'>
+      <h2 className='text-4xl font-bold text-center mb-10'>
+        Event <span className='text-blue-600'>Gallery</span>
+      </h2>
+      <p className='text-gray-700 text-center mb-10'>
         Glimpses from our vibrant IEEE journey
       </p>
 
       {/* Buttons */}
       <div className='flex justify-end items-center mb-6'>
-        <button onClick={prevProject} className='p-2 bg-gray-200 hover:bg-gray-300 rounded mr-2'>
+        <button onClick={prevProject} className='p-2 bg-gray-300 hover:bg-gray-200 rounded mr-2'>
           <img src={assets.left_arrow} alt='Previous' className='w-5 h-5' />
         </button>
-        <button onClick={nextProject} className='p-2 bg-gray-200 hover:bg-gray-300 rounded'>
+        <button onClick={nextProject} className='p-2 bg-gray-300 hover:bg-gray-200 rounded'>
           <img src={assets.right_arrow} alt='Next' className='w-5 h-5' />
         </button>
       </div>
@@ -79,15 +85,15 @@ const Gallery = () => {
                 alt={event.title}
                 className='rounded-lg shadow-lg w-full h-72 object-cover'
               />
-              <div className='absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white/90 backdrop-blur px-4 py-2 rounded shadow text-center w-11/12'>
-                <h2 className='text-lg font-semibold text-gray-800'>{event.title}</h2>
-                <p className='text-sm text-gray-600'>{event.date}</p>
+              <div className='absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/70 backdrop-blur px-4 py-2 rounded shadow text-center w-11/12'>
+                <h2 className='text-lg font-semibold text-white'>{event.title}</h2>
+                <p className='text-sm text-gray-300'>{event.date}</p>
               </div>
             </div>
           ))}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
