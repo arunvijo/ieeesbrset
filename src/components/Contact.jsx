@@ -1,67 +1,79 @@
-import React from 'react'
+import React, { useState } from 'react';
+import { toast } from 'react-hot-toast';
 
 const Contact = () => {
-
-  const [result, setResult] = React.useState("");
+  const [result, setResult] = useState("");
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    setResult("Sending....");
+    setResult("Sending...");
     const formData = new FormData(event.target);
-
     formData.append("access_key", "c338cf41-bca2-4ad2-8f68-2d8b2e83fdc5");
 
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
-      body: formData
+      body: formData,
     });
 
     const data = await response.json();
 
     if (data.success) {
       setResult("");
-      toast.success("Form Submitted Successfully")
+      toast.success("Form Submitted Successfully");
       event.target.reset();
     } else {
-      console.log("Error", data);
-      toast.error(data.message)
-      setResult(data.message);
+      console.error("Error:", data);
+      toast.error(data.message || "Something went wrong");
+      setResult(data.message || "Failed");
     }
   };
 
   return (
-    <div className='text-center p-6 py-20 lg:px-32 w-full
-    overflow-hidden' id='Contact'>
-        <h1 className='text-2xl sm:text:4xl font-bold mb-2
-        text-center'>Contact <span className='underline
-        underline-offset-4 decoration-1 under font-light'>With Us</span></h1> 
-        <p className='text-center text-gray-500 mb-12 max-w-80
-        mx-auto'>Ready to Make a Move? Let's Build Your Future Together</p>
-        <form  onSubmit={onSubmit}>
-            <div>
-                <div className='w-full md:w-1/2 text-left'>
-                Your Name
-                <input className='w-full border border-gray-300 rounded py-3
-                px-4 mt-2' type="text" name='Name' placeholder='Your Name' required/>
-                </div>
-            </div>
-            <div>
-                <div className='w-full md:w-1/2 text-left'>
-                Your Email
-                <input className='w-full border border-gray-300 rounded py-3
-                px-4 mt-2' type="text" name='Email' placeholder='Your Email' required/>
-                </div>
-            </div>
-            <div className='my-6 text-left'>Message
-              <textarea className='w-full border border-gray-300 rounded py-3
-              px-4 mt-2 h-48 resize-none'
-              name="Message" placeholder='Message' required></textarea>
-            </div>
-            <button className='bg-blue-600 text-white py-2 px-12 mb-10
-            rounded'>{result ? result : "Send Message"}</button>
-        </form>
-    </div>
-  )
-}
+    <section className='container mx-auto px-6 py-20 lg:px-32' id='Contact'>
+      <h2 className='text-4xl font-bold text-center mb-10'>Contact <span className='text-blue-600'>US</span></h2>
+      <p className='text-gray-500 text-center mb-12 max-w-xl mx-auto'>
+        Ready to connect? Fill out the form and our team will get back to you shortly.
+      </p>
 
-export default Contact
+      <form onSubmit={onSubmit} className='max-w-2xl mx-auto space-y-6'>
+        <div>
+          <label className='block text-sm font-medium mb-1'>Your Name</label>
+          <input
+            type='text'
+            name='Name'
+            required
+            placeholder='John Doe'
+            className='w-full border border-gray-300 rounded px-4 py-3 focus:outline-none'
+          />
+        </div>
+        <div>
+          <label className='block text-sm font-medium mb-1'>Your Email</label>
+          <input
+            type='email'
+            name='Email'
+            required
+            placeholder='john@example.com'
+            className='w-full border border-gray-300 rounded px-4 py-3 focus:outline-none'
+          />
+        </div>
+        <div>
+          <label className='block text-sm font-medium mb-1'>Message</label>
+          <textarea
+            name='Message'
+            required
+            placeholder='Type your message here...'
+            className='w-full border border-gray-300 rounded px-4 py-3 h-40 resize-none focus:outline-none'
+          ></textarea>
+        </div>
+        <button
+          type='submit'
+          className='bg-blue-600 text-white py-2 px-8 rounded hover:bg-blue-700 transition'
+        >
+          {result || "Send Message"}
+        </button>
+      </form>
+    </section>
+  );
+};
+
+export default Contact;

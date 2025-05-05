@@ -1,6 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { assets, projectsData } from '../assets/assets';
-import { motion } from "motion/react"
+import { assets } from '../assets/assets';
+import { motion } from "framer-motion";
+
+const events = [
+  { title: 'TechTalks 2024', date: 'Jan 15, 2024', image: '/Events/g1.png' },
+  { title: 'InnovateX Hackathon', date: 'Feb 10, 2024', image: '/Events/g2.jpeg' },
+  { title: 'WIE Empower Summit', date: 'Mar 8, 2024', image: '/Events/g3.jpeg' },
+  { title: 'RAS Robotics Expo', date: 'Apr 5, 2024', image: '/Events/g4.jpeg' },
+  { title: 'RAS Robotics Expo', date: 'Apr 5, 2024', image: '/Events/g5.jpeg' },
+  { title: 'RAS Robotics Expo', date: 'Apr 5, 2024', image: '/Events/g6.jpeg' },
+  // Add more as needed
+];
 
 const Gallery = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -9,7 +19,9 @@ const Gallery = () => {
   useEffect(() => {
     const updateCardsToShow = () => {
       if (window.innerWidth >= 1024) {
-        setCardsToShow(projectsData.length);
+        setCardsToShow(3);
+      } else if (window.innerWidth >= 768) {
+        setCardsToShow(2);
       } else {
         setCardsToShow(1);
       }
@@ -17,58 +29,59 @@ const Gallery = () => {
 
     updateCardsToShow();
     window.addEventListener('resize', updateCardsToShow);
-    
     return () => window.removeEventListener('resize', updateCardsToShow);
   }, []);
 
   const nextProject = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % projectsData.length);
+    setCurrentIndex((prevIndex) => (prevIndex + cardsToShow) % events.length);
   };
 
   const prevProject = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? projectsData.length - 1 : prevIndex - 1));
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? events.length - cardsToShow : (prevIndex - cardsToShow + events.length) % events.length
+    );
   };
 
   return (
-    <motion.div 
-    initial={{opacity: 0,x:-200}}
-    transition={{duration:1}}
-    whileInView={{opacity: 1,x:0}}
-    viewport={{once:true}}    
-    className='container mx-auto py-4 pt-20 px-6 md:px-20 lg:px-32 my-20 w-full overflow-hidden' id='Gallery'>
-      <h1 className='text-2xl sm:text-4xl font-bold mb-2 text-center'>
-        Through <span className='underline underline-offset-4 decoration-1 font-light'>Gallery</span>
-      </h1>
-      <p className='text-gray-500 max-w-80 text-center mb-8 mx-auto'>
-        Crafting Spaces, Building Legacies - Explore Our Portfolio
+    <motion.div
+      initial={{ opacity: 0, x: -200 }}
+      transition={{ duration: 1 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      className='container mx-auto px-6 md:px-16 lg:px-24 py-20 w-full'
+      id='Gallery'
+    >
+      <h2 className='text-4xl font-bold text-center mb-10'>Event <span className='text-blue-600'>Gallery</span></h2>
+      <p className='text-gray-500 text-center mb-10'>
+        Glimpses from our vibrant IEEE journey
       </p>
 
-      {/* -------Slider buttons------- */}
-      <div className='flex justify-end items-center mb-8'>
-        <button onClick={prevProject} className='p-3 bg-gray-200 rounded mr-2' aria-label='Previous Event'>
-          <img src={assets.left_arrow} alt='Previous' />
+      {/* Buttons */}
+      <div className='flex justify-end items-center mb-6'>
+        <button onClick={prevProject} className='p-2 bg-gray-200 hover:bg-gray-300 rounded mr-2'>
+          <img src={assets.left_arrow} alt='Previous' className='w-5 h-5' />
         </button>
-        <button onClick={nextProject} className='p-3 bg-gray-200 rounded' aria-label='Next Event'>
-          <img src={assets.right_arrow} alt='Next' />
+        <button onClick={nextProject} className='p-2 bg-gray-200 hover:bg-gray-300 rounded'>
+          <img src={assets.right_arrow} alt='Next' className='w-5 h-5' />
         </button>
       </div>
 
-      {/* -------Gallery slider container------- */}
+      {/* Gallery */}
       <div className='overflow-hidden'>
         <div
-          className='flex gap-8 transition-transform duration-500 ease-in-out'
+          className='flex gap-6 transition-transform duration-500 ease-in-out'
           style={{ transform: `translateX(-${(currentIndex * 100) / cardsToShow}%)` }}
         >
-          {projectsData.map((project, index) => (
-            <div key={index} className='relative flex-shrink-0 w-full sm:w-1/4'>
-              <img src={project.image} alt={project.title} className='w-full h-auto mb-14' />
-              <div className='absolute left-0 right-0 bottom-5 flex justify-center'>
-                <div className='inline-block bg-white w-3/4 px-4 py-2 shadow-md'>
-                  <h2 className='text-xl font-semibold text-gray-800'>{project.title}</h2>
-                  <p className='text-gray-500 text-sm'>
-                    {project.price} <span className='px-1'></span> {project.location}
-                  </p>
-                </div>
+          {events.map((event, index) => (
+            <div key={index} className='relative flex-shrink-0 w-full md:w-1/2 lg:w-1/3'>
+              <img
+                src={event.image}
+                alt={event.title}
+                className='rounded-lg shadow-lg w-full h-72 object-cover'
+              />
+              <div className='absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white/90 backdrop-blur px-4 py-2 rounded shadow text-center w-11/12'>
+                <h2 className='text-lg font-semibold text-gray-800'>{event.title}</h2>
+                <p className='text-sm text-gray-600'>{event.date}</p>
               </div>
             </div>
           ))}
