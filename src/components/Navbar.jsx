@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { assets } from '../assets/assets';
 
 const Navbar = () => {
@@ -12,30 +13,39 @@ const Navbar = () => {
   }, [showMobileMenu]);
 
   const navLinks = [
-    { label: 'Home', href: '#Header' },
-    { label: 'About', href: '#About' },
-    { label: 'Execom', href: '#Execom' },
-    { label: 'Gallery', href: '#Gallery' }
+    { label: 'Home', href: '/' },
+    { label: 'Execom', href: '/execom' },
+    { label: 'Events', href: '/events' },
   ];
 
   return (
     <header className='absolute top-0 left-0 w-full z-20'>
       <div className='container mx-auto flex justify-between items-center px-6 py-4 md:px-20 lg:px-32'>
-        <img src={assets.logo} alt='IEEE Logo' className='h-10 w-auto' />
-        
+        <img src="/logo.png" alt='IEEE Logo' className='h-10 w-auto' />
+
         {/* Desktop Menu */}
         <nav className='hidden md:flex gap-8 text-white font-medium items-center'>
-          {navLinks.map((link, index) => (
-            <a
-              key={index}
-              href={link.href}
-              className='hover:text-blue-400 transition-colors'
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link, index) =>
+            link.href.startsWith('#') ? (
+              <a
+                key={index}
+                href={link.href}
+                className='hover:text-blue-400 transition-colors'
+              >
+                {link.label}
+              </a>
+            ) : (
+              <Link
+                key={index}
+                to={link.href}
+                className='hover:text-blue-400 transition-colors'
+              >
+                {link.label}
+              </Link>
+            )
+          )}
           <a
-            href="#Contact"
+            href='#Contact'
             className='ml-6 bg-white text-black px-6 py-2 rounded-full font-semibold hover:bg-gray-200 transition'
           >
             Contact Us
@@ -66,19 +76,30 @@ const Navbar = () => {
           />
         </div>
         <ul className='flex flex-col items-center gap-4 mt-10 text-lg font-semibold text-gray-800'>
-          {navLinks.map((link, index) => (
-            <a
-              key={index}
-              onClick={() => setShowMobileMenu(false)}
-              href={link.href}
-              className='px-4 py-2 hover:bg-gray-200 rounded-full transition'
-            >
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link, index) =>
+            link.href.startsWith('#') ? (
+              <a
+                key={index}
+                onClick={() => setShowMobileMenu(false)}
+                href={link.href}
+                className='px-4 py-2 hover:bg-gray-200 rounded-full transition'
+              >
+                {link.label}
+              </a>
+            ) : (
+              <Link
+                key={index}
+                onClick={() => setShowMobileMenu(false)}
+                to={link.href}
+                className='px-4 py-2 hover:bg-gray-200 rounded-full transition'
+              >
+                {link.label}
+              </Link>
+            )
+          )}
           <a
             onClick={() => setShowMobileMenu(false)}
-            href="#Contact"
+            href='#Contact'
             className='mt-4 bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition'
           >
             Contact Us

@@ -59,7 +59,7 @@ const Gallery = () => {
         Event <span className='text-blue-600'>Gallery</span>
       </h2>
       <p className='text-gray-700 text-center mb-10'>
-        Glimpses from our vibrant IEEE journey
+      Through thousands of events over the years, the members of our Student Branch (SB) have amassed a great number of experiences and fond memories while setting the groundwork for a successful professional life. Have a walk with us down the memory lane, where we hold our dearest and most enriching of memories.
       </p>
 
       {/* Buttons */}

@@ -8,7 +8,7 @@ const Footer = () => {
         <div className='container mx-auto flex flex-col md:flex-row
         justify-between items-start'>
             <div className='w-full md:w-1/3 mb-8 md:mb-0'>
-                <img src="/logo.png" alt="" />
+                <img className='w-33' src="/logo.png" alt="" />
                 <p className ='text-gray-400 mt-4'>
                 IEEE Student Branch Rajagiri School of Engineering and Technology
 Kakkanad, Kochi

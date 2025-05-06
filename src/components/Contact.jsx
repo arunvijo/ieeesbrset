@@ -29,8 +29,8 @@ const Contact = () => {
   };
 
   return (
-    <section 
-      className="relative bg-cover bg-center py-20 lg:py-32"
+    <section id='Contact' 
+      className="relative bg-cover bg-center py-20 lg:py-32 "
       style={{ backgroundImage: "url('/path-to-your-image.jpg')" }} 
     >
       {/* Dark overlay */}

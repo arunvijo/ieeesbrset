@@ -73,6 +73,40 @@ export const projectsData = [
     
   ];
 
+  const societies = {
+    SB: Array.from(
+      new Map(
+        [
+          { name: "Rinza Yunus", position: "Chair", img: "Rinza Yunus.jpg.JPG", link: "/profile/rinza" },
+          { name: "Alias Eldho", position: "Vice Chair", img: "AliasEldo.jpg", link: "/profile/alias" },
+          { name: "Arun Vijo Tharakan", position: "Webmaster", img: "arun vijo.jpeg", link: "/profile/arun" },
+          { name: "Adriel Bobby", position: "Member", img: "Adriel Bobby.jpg", link: "/profile/adriel" },
+          { name: "Amelin Alexander", position: "Member", img: "amelin alexander.jpg", link: "/profile/amelin" },
+          { name: "Anagha N Nath", position: "Member", img: "Anagha N Nath.jpg", link: "/profile/anagha" },
+          { name: "Ananya Merlyn George", position: "Member", img: "Ananya Merlyn George .jpg", link: "/profile/ananya" },
+          { name: "Aparna Mahesh", position: "Member", img: "aparna mahesh.jpg", link: "/profile/aparna" },
+          { name: "Athira Ajay", position: "Secretary", img: "athira ajay.jpg", link: "/profile/athira" },
+          { name: "Behanan K Bahnan", position: "Member", img: "behanan k bahanan.jpg", link: "/profile/behanan" },
+          { name: "Darsan Dileep", position: "Member", img: "Darsan Dileep.JPG", link: "/profile/darsan" },
+          { name: "Devamanas S", position: "Member", img: "Devamanas S.JPG", link: "/profile/devamanas" },
+          { name: "Jala Vishwa Keerthi", position: "Member", img: "jala vishwa keerthi.png", link: "/profile/jala" },
+          { name: "Krishnapriya M", position: "Member", img: "krishnapriya m.jpg", link: "/profile/krishnapriya" },
+          { name: "Milee B Kokkatt", position: "Member", img: "MILEE B KOKKATT.png", link: "/profile/milee" },
+          { name: "Neha Biju", position: "Member", img: "Neha Biju.JPEG", link: "/profile/neha" },
+          { name: "Neha R Jacob", position: "Member", img: "Neha R Jacob.jpg", link: "/profile/nehaR" },
+          { name: "Nia Jobby", position: "Member", img: "Nia Jobby .jpg", link: "/profile/nia" },
+          { name: "Nihala Nizamudeen", position: "Member", img: "NIHALA NIZAMUDEEN .HEIC", link: "/profile/nihala" },
+          { name: "Noahan Zacharia", position: "Member", img: "Noahan zacharia.png", link: "/profile/noahan" },
+          { name: "Punya D", position: "Member", img: "Punya D.JPG", link: "/profile/ponya" },
+          { name: "Ryyan Safar", position: "Member", img: "Ryyan Safar.png", link: "/profile/ryyan" },
+          { name: "Sabharish P V", position: "Member", img: "Sabharish P V.jpg", link: "/profile/sabharish" },
+          { name: "Sangeeth M S", position: "Member", img: "Sangeeth m s.jpg", link: "/profile/sangeeth" },
+          { name: "Shreya M", position: "Member", img: "Shreya M.JPG", link: "/profile/shreya" },
+        ].map((m) => [m.name, m])
+      ).values()
+    ),
+  };
+
   export const testimonialsData = [
     {
         name: "Donald Jackman",
