@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 
 import Header from './components/Header';
 import About from './components/About';
@@ -33,21 +33,38 @@ const Home = () => (
   </>
 );
 
+// Layout component to conditionally apply background
+const Layout = ({ children }) => {
+  const location = useLocation();
+  const noBgPages = ['/events', '/execom'];
+  // Also hide for individual event pages if needed
+  const isNoBg = noBgPages.includes(location.pathname) ;
+
+  return (
+    <div
+      className="w-full min-h-screen overflow-hidden"
+      style={
+        !isNoBg
+          ? {
+              backgroundImage: "url('/bg.jpg')",
+              backgroundAttachment: 'fixed',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }
+          : {}
+      }
+    >
+      <ToastContainer />
+      <Navbar />
+      {children}
+    </div>
+  );
+};
+
 const App = () => {
   return (
     <BrowserRouter>
-      <div
-        className="w-full min-h-screen overflow-hidden"
-        style={{
-          backgroundImage: "url('/bg.jpg')",
-          backgroundAttachment: 'fixed',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        <ToastContainer />
-        <Navbar />
-
+      <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/events" element={<Events />} />
@@ -56,7 +73,7 @@ const App = () => {
           <Route path="/event/:eventId" element={<EventDetail />} />
           {/* Add more routes as needed */}
         </Routes>
-      </div>
+      </Layout>
     </BrowserRouter>
   );
 };
