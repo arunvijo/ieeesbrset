@@ -48,15 +48,14 @@ const Gallery = () => {
   };
 
   return (
-    // 1. Applied the standard page background and layout
     <div
       className="relative py-24 px-6 md:px-20 lg:px-32 bg-gradient-to-br from-[#f8fbff] to-[#e9f1fb] text-gray-900 overflow-hidden"
       id="Gallery"
     >
-      {/* 2. Added the subtle radial background glow */}
+      {/* Subtle radial background glow */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(0,102,204,0.07),transparent_60%)] pointer-events-none"></div>
       
-      {/* 3. Updated the header to match the site-wide animated style */}
+      {/* Header */}
       <div className="text-center mb-12 relative z-10">
         <motion.h2
           className="text-5xl font-extrabold text-gray-800 inline-block relative tracking-tight"
@@ -79,7 +78,7 @@ const Gallery = () => {
         </p>
       </div>
       
-      {/* 4. Navigation Buttons updated for style consistency */}
+      {/* Navigation Buttons */}
       <div className="flex justify-end items-center mb-6 space-x-3 relative z-10">
         <motion.button
           whileHover={{ scale: 1.1 }}
@@ -111,7 +110,6 @@ const Gallery = () => {
           transition={{ type: "spring", stiffness: 200, damping: 25 }}
         >
           {events.map((event, index) => (
-            // 5. Re-styled each carousel item into a consistent, interactive 'card'
             <motion.div
               key={index}
               whileHover={{ y: -8, scale: 1.02 }}
@@ -128,7 +126,7 @@ const Gallery = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
 
-              {/* Text Section (Replaces the overlay) */}
+              {/* Text Section */}
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2 text-gray-800 group-hover:text-blue-700 transition-colors truncate">
                   {event.title}
@@ -139,16 +137,8 @@ const Gallery = () => {
           ))}
         </motion.div>
         
-        {/* 6. Progress Bar color updated */}
-        <div className="w-full bg-gray-200 h-1 mt-8 rounded-full overflow-hidden">
-          <motion.div
-            key={currentIndex}
-            initial={{ width: "0%" }}
-            animate={{ width: "100%" }}
-            transition={{ duration: 3, ease: "linear" }}
-            className="h-1 bg-blue-700"
-          />
-        </div>
+        {/* Progress Bar has been removed from here */}
+
       </div>
     </div>
   );
