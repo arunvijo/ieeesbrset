@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from './Navbar';
-import { Link } from 'react-router-dom'; // Link is already imported, now we'll use it
+import { Link } from 'react-router-dom';
 
 // Unchanged upcoming events
 const upcomingEvents = [
@@ -20,39 +20,56 @@ const upcomingEvents = [
   }
 ];
 
-// Past events categorized by society from your spreadsheets
+// --- UPDATED DATA ---
+// Past events now match your 2024 spreadsheet and provided event images.
 const pastEvents = {
   "Student Branch (SB)": [
-    { name: "IEEE Day 2024", date: "2024-10-01", description: "Celebrating the global IEEE community with various technical and non-technical events.", image: "/events/demo.jpg" },
-    { name: "EXECOM Training", date: "2024-03-05", description: "Leadership and management training for the new executive committee members.", image: "/events/demo.jpg" },
-    { name: "Annual General Meeting 2024", date: "2024-01-20", description: "The annual meeting to discuss the past year's activities and future plans.", image: "/events/demo.jpg" },
-    { name: "Project Expo 2023", date: "2023-11-15", description: "A platform for students to showcase their innovative projects.", image: "/events/demo.jpg" }
-  ],
-  "Computer Society (CS)": [
-    { name: "TechVerse 2.0", date: "2024-09-10", description: "A technical fest focused on emerging trends in computer science.", image: "/events/demo.jpg" },
-    { name: "UI/UX Workshop", date: "2024-05-22", description: "Hands-on session covering the fundamentals of UI/UX design.", image: "/Events/Figma.jpeg" },
-    { name: "Web Dev Bootcamp", date: "2023-08-01", description: "An intensive bootcamp on modern web development technologies.", image: "/events/demo.jpg" }
-  ],
-  "Industry Applications Society (IAS)": [
-    { name: "Industrial Visit to KSEB", date: "2024-11-05", description: "An educational visit to a KSEB substation to understand power distribution.", image: "/events/demo.jpg" },
-    { name: "Illuminar", date: "2024-07-18", description: "A technical talk series featuring experts from various industries.", image: "/events/demo.jpg" },
-    { name: "Expert Talk on Industry 4.0", date: "2023-09-25", description: "A seminar on the fourth industrial revolution and its impact.", image: "/Events/quiz.jpg" }
-  ],
-  "Power & Energy Society (PES)": [
-    { name: "EV Charging Station Visit", date: "2024-10-30", description: "A visit to an electric vehicle charging station to learn about the technology.", image: "/events/demo.jpg" },
-    { name: "World Environment Day Quiz", date: "2024-06-05", description: "A quiz competition to raise awareness about environmental issues.", image: "/events/demo.jpg" },
-    { name: "PES Day Quiz", date: "2023-04-28", description: "Celebrating PES Day with an engaging quiz on power and energy topics.", image: "/Events/Quiz.jpg" }
+    { name: "Annual General Meeting 2024", date: "2024-04-02", description: "Reviewing the year's progress and planning for the future.", image: "/Events/AGM.jpg" },
+    { name: "DEBAITE", date: "2024-11-11", description: "An exciting debate competition for engineering students.", image: "/Events/DebAIte.jpg" },
+    { name: "Game Jam", date: "2024-09-29", description: "A multi-day event focused on collaborative game development.", image: "/Events/GameJam.jpg" },
+    { name: "Learn From Scratch", date: "2024-09-29", description: "A foundational workshop for beginners on key tech skills.", image: "/Events/Scratch.jpg" },
+    { name: "MD Session", date: "2024-03-23", description: "An insightful Membership Development session for members.", image: "/events/demo.jpg" },
+    { name: "Tink-her-Hack 2.0", date: "2024-03-02", description: "A hackathon promoting innovation and problem-solving among women.", image: "/Events/Tinkerhack.png" },
+    { name: "Beach Cleanup, YESS", date: "2024-07-15", description: "An environmental initiative as part of the YESS program.", image: "/events/demo.jpg" },
+    { name: "Circuit Designing, YESS", date: "2024-08-24", description: "A hands-on workshop on the fundamentals of circuit design.", image: "/events/demo.jpg" },
+    { name: "Robo Soccer, YESS", date: "2024-08-24", description: "A fun and competitive event combining robotics and soccer.", image: "/Events/Roborazz.jpeg" },
   ],
   "Robotics & Automation Society (RAS)": [
-    { name: "Line Following Robot Competition", date: "2024-08-20", description: "A competitive event where participants build and race line-following robots.", image: "/events/demo.jpg" },
-    { name: "Robo Soccer", date: "2023-10-10", description: "An exciting competition combining robotics and the fun of soccer.", image: "/Events/RoboRAZZ.jpeg" },
-    { name: "Drone Building Workshop", date: "2023-03-15", description: "A workshop on the basics of drone assembly and operation.", image: "/events/demo.jpg" }
+    { name: "Robo Razz", date: "2024-09-27", description: "An online robotics challenge testing design and programming skills.", image: "/Events/RoboRAZZ.jpeg" }
+  ],
+  "Power & Energy Society (PES)": [
+    { name: "Project Green Future Talk", date: "2024-09-24", description: "A talk on sustainable technologies and green energy solutions.", image: "/Events/GreenFuture.jpg" },
+    { name: "Solar Visit", date: "2024-10-04", description: "An industrial visit to a solar power facility.", image: "/Events/SolarVisit.jpg" },
+  ],
+  "Industry Applications Society (IAS)": [
+    { name: "From Nature to Engineering: Optimization (DLP)", date: "2024-08-06", description: "A distinguished lecture on nature-inspired engineering solutions.", image: "/Events/Illuminar.jpg" },
+    { name: "GeoQuest", date: "2024-07-22", description: "An online treasure hunt testing geographical and technical knowledge.", image: "/Events/GeoQuest.jpg" },
+    { name: "Maze Runner", date: "2024-10-26", description: "An offline competitive event focused on problem-solving.", image: "/Events/MazeRunner.jpeg" },
+    { name: "Shewisdom", date: "2024-04-20", description: "An event celebrating and sharing knowledge from women in tech.", image: "/Events/SheWisdom.jpg" },
+    { name: "Future Charging Trends in EV", date: "2024-06-19", description: "A webinar on the future of on-board EV charger converters.", image: "/Events/WebinarEV.jpg" },
+    { name: "Resilient and Adaptive Electrical Systems", date: "2024-10-09", description: "A technical webinar on modern electrical grid technologies.", image: "/Events/Illuminar.jpg" },
+  ],
+  "Computer Society (CS)": [
+    { name: "AMONG US", date: "2024-10-26", description: "A fun, interactive gaming event for members.", image: "/Events/AmongUs.jpeg" },
+    { name: "Elev8", date: "2024-08-11", description: "A hybrid event series designed to elevate technical skills.", image: "/Events/Elev8.jpeg" },
+    { name: "Minute to Win It", date: "2024-10-03", description: "A series of quick and fun one-minute challenges.", image: "/Events/Min2Win.jpeg" },
+    { name: "Music Production Using AI workshop", date: "2024-11-06", description: "Exploring the intersection of artificial intelligence and music.", image: "/Events/Music.jpeg" },
+    { name: "Open Mic", date: "2024-04-30", description: "A platform for members to showcase their creative talents.", image: "/Events/OpenMic.jpeg" },
+  ],
+  "Signal Processing Society (SPS)": [
+    { name: "Immersive Signals: Introduction to AR/VR", date: "2024-08-24", description: "A webinar exploring the world of Augmented and Virtual Reality.", image: "/events/demo.jpg" },
+    { name: "Intro to FL Studio", date: "2024-11-13", description: "A beginner's workshop on music production with FL Studio.", image: "/events/demo.jpg" },
+    { name: "Triathlon of Minds", date: "2024-09-30", description: "A multi-stage competition testing a range of mental skills.", image: "/Events/Quiz.jpg" },
   ],
   "Women in Engineering (WIE)": [
-    { name: "WIE STAR Program", date: "2024-12-01", description: "A mentorship program aimed at encouraging young girls in STEM fields.", image: "/events/demo.jpg" },
-    { name: "Women in Tech Panel", date: "2023-10-20", description: "A panel discussion with successful women in the technology sector.", image: "/events/demo.jpg" },
-    { name: "Self Defense Workshop", date: "2023-07-12", description: "A practical workshop on self-defense techniques for women.", image: "/events/demo.jpg" }
-  ],
+    { name: "ASCENDIA", date: "2024-10-18", description: "A two-day flagship event focused on empowerment and skill-building.", image: "/Events/Wie.jpg" },
+    { name: "BASICS OF GAME DEVELOPMENT", date: "2024-04-04", description: "An introductory online session on game development concepts.", image: "/events/demo.jpg" },
+    { name: "Ignitia", date: "2024-07-11", description: "An online event designed to spark innovation and creativity.", image: "/events/demo.jpg" },
+    { name: "Origami Workshop", date: "2024-09-27", description: "A creative and relaxing workshop on the art of paper folding.", image: "/events/demo.jpg" },
+    { name: "Redefining Success", date: "2024-03-09", description: "An inspiring online session discussing diverse career paths.", image: "/events/demo.jpg" },
+    { name: "Stick-to-Bridge", date: "2024-10-04", description: "A hands-on engineering challenge to build bridges from sticks.", image: "/events/demo.jpg" },
+    { name: "Triathlon", date: "2024-04-01", description: "A multi-event online competition testing various skills.", image: "/Events/Quiz.jpg" },
+  ]
 };
 
 const Events = () => {
@@ -82,8 +99,6 @@ const Events = () => {
                 <h4 className='text-xl font-semibold text-blue-800'>{event.name}</h4>
                 <p className='text-sm text-gray-600 mb-2'>{event.date}</p>
                 <p className='text-gray-700 mb-4'>{event.description}</p>
-                {/* --- CHANGE MADE HERE --- */}
-                {/* Replaced the <a> tag with <Link> to navigate to the event detail page */}
                 <Link
                   to={`/event/${index}`}
                   className='inline-block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition'
