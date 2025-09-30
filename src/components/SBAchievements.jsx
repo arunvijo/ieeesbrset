@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// 1. Import motion and AnimatePresence for animations
 import { motion, AnimatePresence } from 'framer-motion';
 
 const images = [
@@ -13,73 +12,96 @@ const images = [
   '/SbAwards/sba9.jpeg',
 ];
 
-// Animation variant for the grid container
-const gridVariants = {
+// 1. Updated animation variants to match the 'Societies' component
+// Container animation for staggering effect
+const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.15, ease: 'easeOut' },
+    transition: { staggerChildren: 0.25, delayChildren: 0.2 },
   },
 };
 
-// Animation variant for each image item
-const imageVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+// Card animation for each item
+const itemVariants = {
+  hidden: { y: 40, opacity: 0, scale: 0.95 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.7, ease: 'easeOut' },
+  },
 };
 
 const SBAchievements = () => {
-  // 2. Add state to manage the selected image for the lightbox
   const [selectedImg, setSelectedImg] = useState(null);
 
   return (
-    <div className='py-20 px-6 md:px-20 lg:px-32 bg-white'>
-      <div className='text-center mb-16'>
-        <h2 className='text-4xl font-extrabold text-gray-800 inline-block relative'>
-          SB <span className='text-blue-600'>Achievements</span>
+    // 2. Applied the same background gradient, padding, and relative positioning
+    <div className="relative py-24 px-6 md:px-20 lg:px-32 bg-gradient-to-br from-[#f8fbff] to-[#e9f1fb] text-gray-900 overflow-hidden">
+
+      {/* 3. Added the subtle radial background glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(0,102,204,0.07),transparent_60%)] pointer-events-none"></div>
+
+      {/* 4. Updated the header section to match 'Societies' styling */}
+      <div className="text-center mb-20 relative z-10">
+        <motion.h2
+          className="text-5xl font-extrabold text-gray-800 inline-block relative tracking-tight"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          SB <span className="text-blue-700">Achievements</span>
           <motion.div
-            className="absolute bottom-[-10px] left-0 w-full h-1 bg-blue-600"
+            className="absolute bottom-[-12px] left-0 w-full h-1 bg-blue-700 rounded-full"
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.9, ease: 'easeInOut' }}
+            viewport={{ once: true, amount: 0.8 }}
           />
-        </h2>
-        <p className='text-center text-gray-600 mt-6 max-w-2xl mx-auto'>
+        </motion.h2>
+        <p className="text-gray-600 mt-6 max-w-2xl mx-auto text-lg">
           Celebrating the milestones, awards, and accolades of our IEEE Student Branch. Click on any image to view it larger.
         </p>
       </div>
 
-      {/* 3. Animate the grid of images */}
+      {/* 5. Updated the grid container to use the new variants and gap */}
       <motion.div
-        className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6'
-        variants={gridVariants}
+        className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 relative z-10'
+        variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
       >
         {images.map((src, idx) => (
+          // 6. Styled each image container as a 'card' with identical animations and hover effects
           <motion.div
             key={idx}
-            className='rounded-lg shadow-md overflow-hidden cursor-pointer group'
-            variants={imageVariants}
-            onClick={() => setSelectedImg(src)} // 4. Set the selected image on click
+            variants={itemVariants}
+            whileHover={{ y: -8, scale: 1.02 }}
+            className="group bg-white/90 backdrop-blur-sm border border-gray-200 rounded-2xl shadow-md transition-all duration-300 hover:shadow-2xl hover:border-blue-600/60 cursor-pointer overflow-hidden"
+            onClick={() => setSelectedImg(src)}
           >
-            <img
-              src={src}
-              alt={`Award ${idx + 1}`}
-              className='w-full h-64 object-cover object-center transform transition-transform duration-500 group-hover:scale-110'
-            />
+            <div className="overflow-hidden h-64 relative">
+              <motion.img
+                src={src}
+                alt={`Award ${idx + 1}`}
+                // 7. Added grayscale effect on the image to match the 'Societies' hover style
+                className="w-full h-full object-cover transform group-hover:scale-110 group-hover:grayscale-0 grayscale transition-all duration-700 ease-out"
+              />
+               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
           </motion.div>
         ))}
       </motion.div>
 
-      {/* 5. Lightbox Modal */}
+      {/* Lightbox Modal (unchanged functionality, but benefits from the new aesthetic) */}
       <AnimatePresence>
         {selectedImg && (
           <motion.div
             className='fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center z-50 p-4'
-            onClick={() => setSelectedImg(null)} // Close modal on backdrop click
+            onClick={() => setSelectedImg(null)}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -92,7 +114,7 @@ const SBAchievements = () => {
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.8, y: 50 }}
               transition={{ type: 'spring', stiffness: 200, damping: 25 }}
-              onClick={(e) => e.stopPropagation()} // Prevents closing when clicking the image itself
+              onClick={(e) => e.stopPropagation()}
             />
           </motion.div>
         )}

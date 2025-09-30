@@ -1,73 +1,107 @@
 import React from 'react';
-import Navbar from './Navbar';
-import { motion } from 'motion/react';
-import { ChevronDown } from 'lucide-react'; // ✅ lightweight icon (optional)
+import { motion } from 'framer-motion'; // 1. Standardized to framer-motion
+import { ChevronDown } from 'lucide-react';
+
+// --- ANIMATION VARIANTS for staggered effect ---
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.3, delayChildren: 0.2 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: 'easeOut' },
+  },
+};
+
 
 const Header = () => {
   return (
-    <div className="relative" id="Header">
+    <header className="relative" id="Header">
       <div
         className='min-h-screen bg-cover bg-center flex items-center justify-center relative'
         style={{ backgroundImage: "url('/header_img.jpeg')" }}
       >
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black bg-opacity-60 z-0"></div>
+        <div className="absolute inset-0 bg-black bg-opacity-80 z-0"></div>
 
-        {/* Navbar */}
-        <Navbar />
+        {/* 2. NOTE: Navbar is removed from here. It should be in your main App layout to avoid duplicates. */}
 
         {/* Hero Content */}
         <motion.div
-          initial={{ opacity: 0, y: 100 }}
-          transition={{ duration: 1.5 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className='relative z-10 text-center text-white px-6 md:px-20 lg:px-32'
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className='relative z-10 text-center text-white px-6'
         >
-          <h1 className='text-4xl sm:text-6xl md:text-7xl font-bold max-w-5xl mx-auto leading-tight'>
-            INSPIRE. INNOVATE. LEARN.
-          </h1>
+          <motion.h1
+            variants={itemVariants}
+            className='text-4xl sm:text-6xl md:text-7xl font-extrabold max-w-5xl mx-auto leading-tight tracking-tight'
+          >
+            Advancing Technology for Humanity
+          </motion.h1>
 
-          <div className='mt-10 flex justify-center flex-wrap gap-6'>
-            <a
+          {/* 3. Added a descriptive subtitle */}
+          <motion.p 
+            variants={itemVariants} 
+            className="mt-6 text-lg md:text-xl text-gray-200 max-w-3xl mx-auto"
+          >
+            Welcome to the IEEE Student Branch at Rajagiri School of Engineering & Technology.
+          </motion.p>
+          
+          <motion.div 
+            variants={itemVariants}
+            className='mt-10 flex justify-center flex-wrap gap-4'
+          >
+            {/* 4. Enhanced buttons with motion and consistent styling */}
+            <motion.a
               href="#About"
-              className='border border-white px-8 py-3 rounded-full hover:bg-white hover:text-black transition'
+              className='border-2 border-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-black transition-all duration-300'
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               Know More
-            </a>
-            <a
+            </motion.a>
+            <motion.a
               href="#Contact"
-              className='bg-blue-600 px-8 py-3 rounded-full hover:bg-blue-700 transition text-white'
+              className='bg-blue-700 px-8 py-3 rounded-full font-semibold hover:bg-blue-800 transition-all duration-300 text-white'
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               Contact Us
-            </a>
-          </div>
+            </motion.a>
+          </motion.div>
         </motion.div>
 
-        {/* ⬇️ Animated Scroll Arrow */}
+        {/* Animated Scroll Arrow */}
         <a
           href="#About"
-          className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-50 text-white hover:text-blue-300 transition"
+          className="absolute bottom-20 left-1/2 -translate-x-1/2 z-20 text-white hover:text-blue-300 transition"
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ repeat: Infinity, duration: 1.8 }}
             className="flex flex-col items-center"
           >
-            <ChevronDown size={36} className="mb-1" />
-            <span className="text-sm uppercase tracking-wider">Scroll Down</span>
+            <ChevronDown size={36} />
           </motion.div>
         </a>
 
-        {/* 🔔 Announcement Bar */}
-        <div className="absolute bottom-0 w-full bg-blue-600 text-white text-center py-2 animate-pulse z-50">
+        {/* Announcement Bar */}
+        <div className="absolute bottom-0 w-full bg-blue-700 text-white text-center py-2 z-20">
           📢 <span className='font-semibold'>IEEE PES WEEK 2025:</span> Registrations are now LIVE!{" "}
           <a href="#Register" className="underline font-bold hover:text-yellow-300 transition">
             Click here to join →
           </a>
         </div>
       </div>
-    </div>
+    </header>
   );
 };
 

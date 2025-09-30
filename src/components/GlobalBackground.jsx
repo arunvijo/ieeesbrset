@@ -30,7 +30,7 @@ const GlobalBackground = ({ src, type = "image" }) => {
         />
       )}
       {/* Optional overlay for darkening */}
-      <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-40 z-[-5]" />
+      <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-80 z-[-5]" />
     </>
   )
 }

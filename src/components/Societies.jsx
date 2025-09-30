@@ -1,5 +1,4 @@
 import React from 'react';
-// 1. Import the 'motion' component from Framer Motion
 import { motion } from 'framer-motion';
 
 const societies = [
@@ -28,84 +27,92 @@ const societies = [
     image: '/Socities/wie.jpg',
     description: 'Empowers women in engineering and technology to advance and thrive in their professional careers.'
   },
-   // Added PES for completeness
   {
     name: 'Power & Energy Society (PES)',
-    image: '/Socities/pes.jpg', // Make sure you have a corresponding image
+    image: '/Socities/PESlogo.jpg',
     description: 'Advancing innovation in the electric power and energy industry for the betterment of society.'
   }
 ];
 
-// 2. Define animation variants for the container to orchestrate animations
+// Container animation
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.2, // This will make each child animate one after the other
-    },
+    transition: { staggerChildren: 0.25, delayChildren: 0.2 },
   },
 };
 
-// 3. Define animation variants for each card item
+// Card animation
 const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
+  hidden: { y: 40, opacity: 0, scale: 0.95 },
   visible: {
     y: 0,
     opacity: 1,
-    transition: {
-      duration: 0.6,
-      ease: 'easeOut',
-    },
+    scale: 1,
+    transition: { duration: 0.7, ease: 'easeOut' },
   },
 };
 
 const Societies = () => {
   return (
-    // Refined background styling for a more modern feel
-    <div className='py-20 px-6 md:px-20 lg:px-32 bg-white text-gray-900'>
-      <div className='text-center mb-16'>
-        <h2 className='text-4xl font-extrabold text-gray-800 inline-block relative'>
-          Our <span className='text-blue-600'>Societies</span>
-          {/* Animated underline for a dynamic touch */}
+    <div className="relative py-24 px-6 md:px-20 lg:px-32 bg-gradient-to-br from-[#f8fbff] to-[#e9f1fb] text-gray-900 overflow-hidden">
+      
+      {/* subtle radial background glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(0,102,204,0.07),transparent_60%)] pointer-events-none"></div>
+
+      <div className="text-center mb-20 relative z-10">
+        <motion.h2
+          className="text-5xl font-extrabold text-gray-800 inline-block relative tracking-tight"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          Our <span className="text-blue-700">Societies</span>
           <motion.div
-            className="absolute bottom-[-10px] left-0 w-full h-1 bg-blue-600"
+            className="absolute bottom-[-12px] left-0 w-full h-1 bg-blue-700 rounded-full"
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
+            transition={{ duration: 0.9, ease: 'easeInOut' }}
             viewport={{ once: true, amount: 0.8 }}
           />
-        </h2>
-        <p className="text-gray-600 mt-6 max-w-2xl mx-auto">
+        </motion.h2>
+        <p className="text-gray-600 mt-6 max-w-2xl mx-auto text-lg">
           Explore the diverse technical communities within IEEE RSET SB, each dedicated to a specific field of interest.
         </p>
       </div>
 
-      {/* 4. Apply the motion component and animation variants */}
+      {/* Cards Grid */}
       <motion.div
-        className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12'
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 relative z-10"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }} // Animation triggers when 20% of the grid is visible
+        viewport={{ once: true, amount: 0.2 }}
       >
         {societies.map((society, index) => (
-          // Apply item variants to each card
           <motion.div
             key={index}
-            className='bg-white shadow-lg rounded-xl overflow-hidden border border-gray-200 group transition-all duration-300 hover:shadow-2xl hover:-translate-y-2'
             variants={itemVariants}
+            whileHover={{ y: -8, scale: 1.02 }}
+            className="group bg-white/90 backdrop-blur-sm border border-gray-200 rounded-2xl shadow-md transition-all duration-300 hover:shadow-2xl hover:border-blue-600/60 cursor-pointer overflow-hidden"
           >
-            <div className="overflow-hidden h-56">
-                <img
-                    src={society.image}
-                    alt={society.name}
-                    className='w-full h-full object-cover group-hover:scale-110 transition-transform duration-500' // Added a subtle zoom effect on hover
-                />
+            <div className="overflow-hidden h-60 relative">
+              <motion.img
+                src={society.image}
+                alt={society.name}
+                className="w-full h-full object-cover transform group-hover:scale-110 group-hover:grayscale-0 grayscale transition-all duration-700 ease-out"
+                whileHover={{ rotate: 0.5 }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </div>
-            <div className='p-6'>
-              <h3 className='text-xl font-bold mb-2 text-gray-800'>{society.name}</h3>
-              <p className='text-gray-600 text-sm'>{society.description}</p>
+            <div className="p-6">
+              <h3 className="text-2xl font-semibold mb-3 text-gray-800 group-hover:text-blue-700 transition-colors relative inline-block">
+                {society.name}
+                <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-blue-700 group-hover:w-full transition-all duration-500"></span>
+              </h3>
+              <p className="text-gray-600 text-sm leading-relaxed">{society.description}</p>
             </div>
           </motion.div>
         ))}

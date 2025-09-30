@@ -1,96 +1,153 @@
-import React, { useState, useEffect } from 'react';
-import { assets } from '../assets/assets';
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { assets } from "../assets/assets";
 
 const events = [
-  { title: 'TechTalks 2024', date: 'Jan 15, 2024', image: '/Events/g1.png' },
-  { title: 'InnovateX Hackathon', date: 'Feb 10, 2024', image: '/Events/g2.jpeg' },
-  { title: 'WIE Empower Summit', date: 'Mar 8, 2024', image: '/Events/g3.jpeg' },
-  { title: 'RAS Robotics Expo', date: 'Apr 5, 2024', image: '/Events/g4.jpeg' },
-  { title: 'RAS Robotics Expo', date: 'Apr 5, 2024', image: '/Events/g5.jpeg' },
-  { title: 'RAS Robotics Expo', date: 'Apr 5, 2024', image: '/Events/g6.jpeg' },
-  // Add more as needed
+  { title: "TechTalks 2024", date: "Jan 15, 2024", image: "/Events/g1.png" },
+  { title: "InnovateX Hackathon", date: "Feb 10, 2024", image: "/Events/g2.jpeg" },
+  { title: "WIE Empower Summit", date: "Mar 8, 2024", image: "/Events/g3.jpeg" },
+  { title: "RAS Robotics Expo", date: "Apr 5, 2024", image: "/Events/g4.jpeg" },
+  { title: "RAS Robotics Expo", date: "Apr 5, 2024", image: "/Events/g5.jpeg" },
+  { title: "RAS Robotics Expo", date: "Apr 5, 2024", image: "/Events/g6.jpeg" },
 ];
 
 const Gallery = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardsToShow, setCardsToShow] = useState(1);
+  const [isHovered, setIsHovered] = useState(false);
 
+  // Responsive card count
   useEffect(() => {
     const updateCardsToShow = () => {
-      if (window.innerWidth >= 1024) {
-        setCardsToShow(3);
-      } else if (window.innerWidth >= 768) {
-        setCardsToShow(2);
-      } else {
-        setCardsToShow(1);
-      }
+      if (window.innerWidth >= 1024) setCardsToShow(3);
+      else if (window.innerWidth >= 768) setCardsToShow(2);
+      else setCardsToShow(1);
     };
-
     updateCardsToShow();
-    window.addEventListener('resize', updateCardsToShow);
-    return () => window.removeEventListener('resize', updateCardsToShow);
+    window.addEventListener("resize", updateCardsToShow);
+    return () => window.removeEventListener("resize", updateCardsToShow);
   }, []);
 
+  // Auto scroll with pause on hover
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % events.length);
-    }, 3000); // Auto scroll every 3 seconds
-
-    return () => clearInterval(interval); // Cleanup on unmount
-  }, []);
+    let interval;
+    if (!isHovered) {
+      interval = setInterval(() => {
+        setCurrentIndex((prev) => (prev + 1) % events.length);
+      }, 3000);
+    }
+    return () => clearInterval(interval);
+  }, [isHovered, events.length]);
 
   const nextProject = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + cardsToShow) % events.length);
+    setCurrentIndex((prev) => (prev + 1) % events.length);
   };
 
   const prevProject = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? events.length - cardsToShow : (prevIndex - cardsToShow + events.length) % events.length
-    );
+    setCurrentIndex((prev) => (prev - 1 + events.length) % events.length);
   };
 
   return (
+    // 1. Applied the standard page background and layout
     <div
-      className='container mx-auto px-6 md:px-16 lg:px-24 py-20 w-full bg-white text-gray-900'
-      id='Gallery'
+      className="relative py-24 px-6 md:px-20 lg:px-32 bg-gradient-to-br from-[#f8fbff] to-[#e9f1fb] text-gray-900 overflow-hidden"
+      id="Gallery"
     >
-      <h2 className='text-4xl font-bold text-center mb-10'>
-        Event <span className='text-blue-600'>Gallery</span>
-      </h2>
-      <p className='text-gray-700 text-center mb-10'>
-      Through thousands of events over the years, the members of our Student Branch (SB) have amassed a great number of experiences and fond memories while setting the groundwork for a successful professional life. Have a walk with us down the memory lane, where we hold our dearest and most enriching of memories.
-      </p>
-
-      {/* Buttons */}
-      <div className='flex justify-end items-center mb-6'>
-        <button onClick={prevProject} className='p-2 bg-gray-300 hover:bg-gray-200 rounded mr-2'>
-          <img src={assets.left_arrow} alt='Previous' className='w-5 h-5' />
-        </button>
-        <button onClick={nextProject} className='p-2 bg-gray-300 hover:bg-gray-200 rounded'>
-          <img src={assets.right_arrow} alt='Next' className='w-5 h-5' />
-        </button>
+      {/* 2. Added the subtle radial background glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(0,102,204,0.07),transparent_60%)] pointer-events-none"></div>
+      
+      {/* 3. Updated the header to match the site-wide animated style */}
+      <div className="text-center mb-12 relative z-10">
+        <motion.h2
+          className="text-5xl font-extrabold text-gray-800 inline-block relative tracking-tight"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          Event <span className="text-blue-700">Gallery</span>
+          <motion.div
+            className="absolute bottom-[-12px] left-0 w-full h-1 bg-blue-700 rounded-full"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            transition={{ duration: 0.9, ease: 'easeInOut' }}
+            viewport={{ once: true, amount: 0.8 }}
+          />
+        </motion.h2>
+        <p className="text-gray-600 mt-6 max-w-3xl mx-auto text-lg">
+        Have a walk with us down memory lane, where we hold our dearest and most enriching memories from thousands of events over the years.
+        </p>
+      </div>
+      
+      {/* 4. Navigation Buttons updated for style consistency */}
+      <div className="flex justify-end items-center mb-6 space-x-3 relative z-10">
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={prevProject}
+          className="p-3 rounded-full bg-blue-700 text-white shadow-lg hover:bg-blue-800 transition"
+        >
+          <img src={assets.left_arrow} alt="Previous" className="w-5 h-5" />
+        </motion.button>
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={nextProject}
+          className="p-3 rounded-full bg-blue-700 text-white shadow-lg hover:bg-blue-800 transition"
+        >
+          <img src={assets.right_arrow} alt="Next" className="w-5 h-5" />
+        </motion.button>
       </div>
 
-      {/* Gallery */}
-      <div className='overflow-hidden'>
-        <div
-          className='flex gap-6 transition-transform duration-500 ease-in-out'
-          style={{ transform: `translateX(-${(currentIndex * 100) / cardsToShow}%)` }}
+      {/* Gallery Carousel */}
+      <div
+        className="overflow-hidden relative"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <motion.div
+          className="flex gap-8"
+          animate={{ x: `calc(-${currentIndex * (100 / cardsToShow)}% - ${currentIndex * (32 / cardsToShow)}px)` }}
+          transition={{ type: "spring", stiffness: 200, damping: 25 }}
         >
           {events.map((event, index) => (
-            <div key={index} className='relative flex-shrink-0 w-full md:w-1/2 lg:w-1/3'>
-              <img
-                src={event.image}
-                alt={event.title}
-                className='rounded-lg shadow-lg w-full h-72 object-cover'
-              />
-              <div className='absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/70 backdrop-blur px-4 py-2 rounded shadow text-center w-11/12'>
-                <h2 className='text-lg font-semibold text-white'>{event.title}</h2>
-                <p className='text-sm text-gray-300'>{event.date}</p>
+            // 5. Re-styled each carousel item into a consistent, interactive 'card'
+            <motion.div
+              key={index}
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="group bg-white/90 backdrop-blur-sm border border-gray-200 rounded-2xl shadow-md transition-all duration-300 hover:shadow-2xl hover:border-blue-600/60 overflow-hidden"
+              style={{ flex: `0 0 calc(${100 / cardsToShow}% - ${(cardsToShow - 1) * 32 / cardsToShow}px)` }}
+            >
+              {/* Image Section */}
+              <div className="overflow-hidden h-72 relative">
+                <motion.img
+                  src={event.image}
+                  alt={event.title}
+                  className="w-full h-full object-cover transform group-hover:scale-110 group-hover:grayscale-0 grayscale transition-all duration-700 ease-out"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
-            </div>
+
+              {/* Text Section (Replaces the overlay) */}
+              <div className="p-6">
+                <h3 className="text-xl font-semibold mb-2 text-gray-800 group-hover:text-blue-700 transition-colors truncate">
+                  {event.title}
+                </h3>
+                <p className="text-gray-600 text-sm">{event.date}</p>
+              </div>
+            </motion.div>
           ))}
+        </motion.div>
+        
+        {/* 6. Progress Bar color updated */}
+        <div className="w-full bg-gray-200 h-1 mt-8 rounded-full overflow-hidden">
+          <motion.div
+            key={currentIndex}
+            initial={{ width: "0%" }}
+            animate={{ width: "100%" }}
+            transition={{ duration: 3, ease: "linear" }}
+            className="h-1 bg-blue-700"
+          />
         </div>
       </div>
     </div>

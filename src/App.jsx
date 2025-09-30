@@ -15,7 +15,7 @@ import Navbar from './components/Navbar';
 import Events from './components/Events';
 import Profile from './components/Profile';
 import EventDetail from './components/EventDetails';
-import Newsletters from './components/Newsletters'; // 1. IMPORT THE NEW COMPONENT
+import Newsletters from './components/Newsletters'; 
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -27,7 +27,7 @@ const Home = () => (
     <Societies />
     <SBAchievements />
     <StudentAchievements />
-    <Newsletters /> {/* 2. ADD THE COMPONENT HERE */}
+    <Newsletters />
     <Gallery />
     <Testimonials />
     <Contact />
@@ -39,7 +39,6 @@ const Home = () => (
 const Layout = ({ children }) => {
   const location = useLocation();
   const noBgPages = ['/events', '/execom'];
-  // Also hide for individual event pages if needed
   const isNoBg = noBgPages.includes(location.pathname) ;
 
   return (
@@ -48,7 +47,8 @@ const Layout = ({ children }) => {
       style={
         !isNoBg
           ? {
-              backgroundImage: "url('/bg.jpg')",
+              // CHANGED LINE: Added a dark overlay to the background image
+              backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)), url('/bg.jpg')",
               backgroundAttachment: 'fixed',
               backgroundSize: 'cover',
               backgroundPosition: 'center',
