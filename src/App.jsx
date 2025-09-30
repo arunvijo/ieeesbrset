@@ -15,6 +15,7 @@ import Navbar from './components/Navbar';
 import Events from './components/Events';
 import Profile from './components/Profile';
 import EventDetail from './components/EventDetails';
+import Newsletters from './components/Newsletters'; // 1. IMPORT THE NEW COMPONENT
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -26,6 +27,7 @@ const Home = () => (
     <Societies />
     <SBAchievements />
     <StudentAchievements />
+    <Newsletters /> {/* 2. ADD THE COMPONENT HERE */}
     <Gallery />
     <Testimonials />
     <Contact />
