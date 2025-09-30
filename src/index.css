@@ -6,7 +6,45 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ✅ 3. Global font (default site font) */
+/* === NEW: Professional Global Styles === */
+
+/* ✅ 3. Smooth Scrolling & Font Smoothing for cleaner text rendering */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f8fbff; /* Sets a base color that matches your theme */
+  color: #1f2937; /* Default dark text color for better readability */
+}
+
+/* ✅ 4. Custom Scrollbar to match your site's branding */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #e9f1fb; /* Light blue from your theme */
+}
+::-webkit-scrollbar-thumb {
+  background: #1d4ed8; /* Corresponds to blue-700 */
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #1e40af; /* Corresponds to blue-800 */
+}
+
+/* ✅ 5. Custom Text Selection Color for brand consistency */
+::selection {
+  background-color: #1d4ed8; /* Corresponds to blue-700 */
+  color: #ffffff;
+}
+
+
+/* === Existing & Unchanged Styles === */
+
+/* ✅ 6. Global font (default site font) */
 * {
   font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   margin: 0;
@@ -14,7 +52,8 @@
   box-sizing: border-box;
 }
 
-/* ✅ 4. Register local SpecialElite font */
+/* ✅ 7. Register local SpecialElite font */
+/* Note: Use this typewriter font sparingly for specific, stylized elements to maintain a professional look. */
 @font-face {
   font-family: 'SpecialElite';
   src: url('/src/fonts/SpecialElite-Regular.ttf') format('truetype');
@@ -23,12 +62,12 @@
   font-display: swap;
 }
 
-/* ✅ 5. Helper class: use only where needed */
+/* ✅ 8. Helper class: use only where needed */
 .special-font {
   font-family: 'SpecialElite', cursive;
 }
 
-/* ✅ 6. Optional: Custom collage grid utility */
+/* ✅ 9. Optional: Custom collage grid utility */
 .collage-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
