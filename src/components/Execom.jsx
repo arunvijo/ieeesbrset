@@ -16,7 +16,7 @@ const societyNames = {
 
 const societies = {
   SB: [
-    { name: "Rinza Yunus", position: "IEEE Student Branch Chair", img: "Rinza Yunus.JPG", link: 'rinza' }, //
+    { name: "Rinza Yunus", position: "IEEE Student Branch Chair", img: "Rinza.jpg", link: 'rinza' }, //
     { name: "Alias Eldo", position: "IEEE Student Branch Vice Chair", img: "AliasEldo.jpg", link: 'alias' }, //
     { name: "Amelin Alexander Rathappillil", position: "IEEE Student Branch Secretary", img: "amelin alexander.jpg", link: 'amelin' }, //
     { name: "Athira Ajay", position: "Treasurer", img: "athira ajay.jpg", link: 'athira' }, //
@@ -32,7 +32,7 @@ const societies = {
     { name: "Abhinav s", position: "Design Lead", img: "Sabharish P V.jpg", link: 'abhinav' }, //
     { name: "Sabharish PV", position: "Design Lead", img: "Sabharish P V.jpg", link: 'sabharish' }, //
     { name: "Devamanas S", position: "Media Lead", img: "Devamanas S.JPG", link: 'devamanas' }, //
-    { name: "Abhishek lype", position: "Utility Lead", img: "Abhishek lype.jpg", link: 'abhishek' }, //
+    { name: "Abhishek lype", position: "Utility Lead", img: "Abhishek.jpg", link: 'abhishek' }, //
   ],
   CS: [
     { name: "Navaneeth K.B", position: "Chair", img: "Navaneeth K.B.jpg", link: 'navaneeth' }, //
@@ -53,16 +53,16 @@ const societies = {
     { name: "Joel John Thumpayil", position: "Treasurer", img: "Joel John Thumpayil.jpg", link: 'joel' }, //
   ],
   RAS: [
-    { name: "Abner Sebastian Lopez", position: "Chair", img: "Abner Sebastian Lopez.jpg", link: 'abner' }, //
+    { name: "Abner Sebastian Lopez", position: "Chair", img: "Abner.jpg", link: 'abner' }, //
     { name: "Akul Prasanth", position: "Vice Chair", img: "Akul Prasanth .jpg", link: 'akul' }, //
     { name: "Adheetha krishnaja", position: "Secretary", img: "Adheetha krishnaja .jpg", link: 'adheetha' }, //
-    { name: "Milee B Kokkatt", position: "Treasurer", img: "MILEE B KOKKATT.png", link: 'milee' }, //
+    { name: "Milee B Kokkatt", position: "Treasurer", img: "Milee.jpg", link: 'milee' }, //
   ],
   SPS: [
-    { name: "Jeremy Simon Moncey", position: "Chair", img: "Rinza Yunus.JPG", link: 'jeremy' }, //
-    { name: "Jenet Joseph", position: "Vice Chair", img: "Rinza Yunus.JPG", link: 'jenet' }, //
-    { name: "Keerthana S", position: "Secretary", img: "Rinza Yunus.JPG", link: 'keerthana' }, //
-    { name: "Pooja S Nair", position: "Treasurer", img: "Rinza Yunus.JPG", link: 'pooja' }, //
+    { name: "Jeremy Simon Moncey", position: "Chair", img: "Jeremy.jpg", link: 'jeremy' }, //
+    { name: "Jenet Joseph", position: "Vice Chair", img: "Jenet Joseph.jpg", link: 'jenet' }, //
+    { name: "Keerthana S", position: "Secretary", img: "Keerthana.jpg", link: 'keerthana' }, //
+    { name: "Pooja S Nair", position: "Treasurer", img: "Pooja.jpg", link: 'pooja' }, //
   ],
   WIE: [
     { name: "Sreepriya S", position: "Chair", img: "Sreepriya.jpg", link: 'sreepriya' }, //

@@ -30,22 +30,22 @@ const pastEvents = {
   ],
   "Computer Society (CS)": [
     { name: "TechVerse 2.0", date: "2024-09-10", description: "A technical fest focused on emerging trends in computer science.", image: "/events/demo.jpg" },
-    { name: "UI/UX Workshop", date: "2024-05-22", description: "Hands-on session covering the fundamentals of UI/UX design.", image: "/events/demo.jpg" },
+    { name: "UI/UX Workshop", date: "2024-05-22", description: "Hands-on session covering the fundamentals of UI/UX design.", image: "/Events/Figma.jpeg" },
     { name: "Web Dev Bootcamp", date: "2023-08-01", description: "An intensive bootcamp on modern web development technologies.", image: "/events/demo.jpg" }
   ],
   "Industry Applications Society (IAS)": [
     { name: "Industrial Visit to KSEB", date: "2024-11-05", description: "An educational visit to a KSEB substation to understand power distribution.", image: "/events/demo.jpg" },
     { name: "Illuminar", date: "2024-07-18", description: "A technical talk series featuring experts from various industries.", image: "/events/demo.jpg" },
-    { name: "Expert Talk on Industry 4.0", date: "2023-09-25", description: "A seminar on the fourth industrial revolution and its impact.", image: "/events/demo.jpg" }
+    { name: "Expert Talk on Industry 4.0", date: "2023-09-25", description: "A seminar on the fourth industrial revolution and its impact.", image: "/Events/quiz.jpg" }
   ],
   "Power & Energy Society (PES)": [
     { name: "EV Charging Station Visit", date: "2024-10-30", description: "A visit to an electric vehicle charging station to learn about the technology.", image: "/events/demo.jpg" },
     { name: "World Environment Day Quiz", date: "2024-06-05", description: "A quiz competition to raise awareness about environmental issues.", image: "/events/demo.jpg" },
-    { name: "PES Day Quiz", date: "2023-04-28", description: "Celebrating PES Day with an engaging quiz on power and energy topics.", image: "/events/demo.jpg" }
+    { name: "PES Day Quiz", date: "2023-04-28", description: "Celebrating PES Day with an engaging quiz on power and energy topics.", image: "/Events/Quiz.jpg" }
   ],
   "Robotics & Automation Society (RAS)": [
     { name: "Line Following Robot Competition", date: "2024-08-20", description: "A competitive event where participants build and race line-following robots.", image: "/events/demo.jpg" },
-    { name: "Robo Soccer", date: "2023-10-10", description: "An exciting competition combining robotics and the fun of soccer.", image: "/events/demo.jpg" },
+    { name: "Robo Soccer", date: "2023-10-10", description: "An exciting competition combining robotics and the fun of soccer.", image: "/Events/RoboRAZZ.jpeg" },
     { name: "Drone Building Workshop", date: "2023-03-15", description: "A workshop on the basics of drone assembly and operation.", image: "/events/demo.jpg" }
   ],
   "Women in Engineering (WIE)": [
