@@ -63,7 +63,7 @@ const itemVariants = {
 const Societies = () => {
   return (
     // Refined background styling for a more modern feel
-    <div className='py-20 px-6 md:px-20 lg:px-32 bg-gradient-to-b from-gray-50 to-blue-100 text-gray-900'>
+    <div className='py-20 px-6 md:px-20 lg:px-32 bg-white text-gray-900'>
       <div className='text-center mb-16'>
         <h2 className='text-4xl font-extrabold text-gray-800 inline-block relative'>
           Our <span className='text-blue-600'>Societies</span>

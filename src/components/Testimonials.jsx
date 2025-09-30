@@ -19,7 +19,10 @@ const testimonialsData = [
 
 const Testimonials = () => {
   return (
-    <div className='w-full bg-gray-50 py-20 px-6 lg:px-24' id='Testimonials'>
+    <div
+      className='w-full bg-gray-50 py-20 px-6 lg:px-24 special-font'
+      id='Testimonials'
+    >
       <h2 className='text-4xl font-bold text-center mb-12 text-gray-800'>
         Expert <span className='text-blue-600'>Testimonials</span>
       </h2>
@@ -31,7 +34,9 @@ const Testimonials = () => {
             className='relative bg-white p-8 rounded-xl shadow-lg transform transition-all hover:scale-105 hover:shadow-2xl'
           >
             <div className='text-5xl text-gray-500 mb-4'>❝</div>
-            <p className='text-lg leading-relaxed text-gray-700 font-light'>{testimonial.text}</p>
+            <p className='text-lg leading-relaxed text-gray-700 font-light'>
+              {testimonial.text}
+            </p>
 
             <div className='absolute bottom-[-50px] left-8 flex items-center gap-6'>
               <img
