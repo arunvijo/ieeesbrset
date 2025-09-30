@@ -65,6 +65,7 @@ const Gallery = () => {
           viewport={{ once: true }}
         >
           Event <span className="text-blue-700">Gallery</span>
+          {/* This underline is already fully responsive */}
           <motion.div
             className="absolute bottom-[-12px] left-0 w-full h-1 bg-blue-700 rounded-full"
             initial={{ scaleX: 0 }}
@@ -121,7 +122,8 @@ const Gallery = () => {
                 <motion.img
                   src={event.image}
                   alt={event.title}
-                  className="w-full h-full object-cover transform group-hover:scale-110 group-hover:grayscale-0 grayscale transition-all duration-700 ease-out"
+                  // UPDATED: Removed "grayscale" and "group-hover:grayscale-0"
+                  className="w-full h-full object-cover transform group-hover:scale-110 transition-all duration-700 ease-out"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
@@ -137,8 +139,6 @@ const Gallery = () => {
           ))}
         </motion.div>
         
-        {/* Progress Bar has been removed from here */}
-
       </div>
     </div>
   );

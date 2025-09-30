@@ -17,7 +17,6 @@ const newslettersData = [
   }
 ];
 
-// 1. Added consistent animation variants from other pages
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -38,13 +37,10 @@ const itemVariants = {
 
 const Newsletters = () => {
   return (
-    // 2. Applied the standard page background and layout
     <div className="relative py-24 px-6 md:px-20 lg:px-32 bg-gradient-to-br from-[#f8fbff] to-[#e9f1fb] text-gray-900 overflow-hidden">
       
-      {/* 3. Added the subtle radial background glow */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(0,102,204,0.07),transparent_60%)] pointer-events-none"></div>
 
-      {/* 4. Updated the header to match the site-wide animated style */}
       <div className="text-center mb-20 relative z-10">
         <motion.h2
           className="text-5xl font-extrabold text-gray-800 inline-block relative tracking-tight"
@@ -54,6 +50,7 @@ const Newsletters = () => {
           viewport={{ once: true }}
         >
           Our <span className="text-blue-700">Newsletters</span>
+          {/* This underline is already fully responsive and works on all screen sizes */}
           <motion.div
             className="absolute bottom-[-12px] left-0 w-full h-1 bg-blue-700 rounded-full"
             initial={{ scaleX: 0 }}
@@ -67,7 +64,6 @@ const Newsletters = () => {
         </p>
       </div>
 
-      {/* 5. Converted grid to a motion component with staggered animations */}
       <motion.div
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 max-w-5xl mx-auto relative z-10"
         variants={containerVariants}
@@ -76,25 +72,23 @@ const Newsletters = () => {
         viewport={{ once: true, amount: 0.2 }}
       >
         {newslettersData.map((newsletter, index) => (
-          // 6. Completely restyled the card to match the site's aesthetic
           <motion.div
             key={index}
             variants={itemVariants}
             whileHover={{ y: -8, scale: 1.02 }}
             className="group bg-white/90 backdrop-blur-sm border border-gray-200 rounded-2xl shadow-md transition-all duration-300 hover:shadow-2xl hover:border-blue-600/60 overflow-hidden"
           >
-            {/* Image section with hover effects */}
             <div className="overflow-hidden h-80 relative">
               <motion.img
                 src={newsletter.previewImage}
                 alt={`Preview of ${newsletter.title}`}
-                className="w-full h-full object-cover object-top transform group-hover:scale-110 group-hover:grayscale-0 grayscale transition-all duration-700 ease-out"
+                // UPDATED: Removed the "grayscale" and "group-hover:grayscale-0" classes
+                className="w-full h-full object-cover object-top transform group-hover:scale-110 transition-all duration-700 ease-out"
                 onError={(e) => { e.target.onerror = null; e.target.src='/Newsletters/default-preview.png' }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </div>
             
-            {/* Content section with title and buttons */}
             <div className="p-6">
               <h3 className="text-2xl font-semibold mb-4 text-gray-800 group-hover:text-blue-700 transition-colors">
                 {newsletter.title}

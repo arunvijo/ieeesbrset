@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from "framer-motion";
 import { toast } from 'react-toastify';
-import { FiMail, FiMapPin, FiLinkedin, FiInstagram, FiYoutube } from 'react-icons/fi'; // 1. NEW: Icons for unique elements
+import { FiMail, FiMapPin, FiLinkedin, FiInstagram, FiYoutube } from 'react-icons/fi';
 
 const Contact = () => {
   const [result, setResult] = useState("");
@@ -41,7 +41,6 @@ const Contact = () => {
       id='Contact' 
       className="relative z-10 py-24 px-6 md:px-20 lg:px-32"
     >
-      {/* 2. UPDATED: Switched to a dark-themed glass card */}
       <motion.div
         className='bg-gray-900/70 backdrop-blur-lg border border-white/10 p-8 md:p-12 rounded-2xl shadow-2xl container mx-auto'
         initial={{ opacity: 0, y: 50 }}
@@ -59,8 +58,9 @@ const Contact = () => {
             viewport={{ once: true }}
           >
             Contact <span className="text-blue-500">Us</span>
+            {/* UPDATED: Changed from a fixed width to w-full to be responsive */}
             <motion.div
-              className="absolute bottom-[-12px] left-1/2 -translate-x-1/2 w-32 h-1 bg-blue-500 rounded-full"
+              className="absolute bottom-[-12px] left-0 w-full h-1 bg-blue-500 rounded-full"
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               transition={{ duration: 0.9, ease: 'easeInOut' }}
@@ -72,7 +72,6 @@ const Contact = () => {
           </p>
         </div>
 
-        {/* 3. NEW: Two-column layout for unique elements + form */}
         <div className="flex flex-col lg:flex-row gap-16">
           {/* Left Column: Contact Info & Socials */}
           <motion.div 

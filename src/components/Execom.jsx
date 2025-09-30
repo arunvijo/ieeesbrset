@@ -100,7 +100,8 @@ const Execom = () => {
   };
 
   return (
-    <div className="relative py-24 px-6 md:px-20 lg:px-32 bg-gradient-to-br from-[#f8fbff] to-[#e9f1fb] text-gray-900 overflow-hidden">
+    // 1. UPDATED: Removed the static gradient to reveal the dynamic animated background
+    <div className="relative py-24 px-6 md:px-20 lg:px-32 text-gray-900 overflow-hidden">
         {/* Banner */}
         <div className='relative w-screen h-[400px] -mx-6 md:-mx-20 lg:-mx-32 -mt-24 mb-24 overflow-hidden'>
             <img src="/banner2.JPG" alt="Execom Banner" className="absolute inset-0 w-full h-full object-cover" />
@@ -127,23 +128,25 @@ const Execom = () => {
 
         {Object.entries(societies).map(([societyKey, members]) => (
             <div key={societyKey} className='mb-24'>
-                {/* Society Header */}
-                <motion.h2
-                    className="text-4xl font-extrabold text-gray-800 inline-block relative tracking-tight mb-16 text-center w-full"
-                    initial={{ opacity: 0, y: -20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    viewport={{ once: true }}
-                >
-                    {societyNames[societyKey] || societyKey}
-                    <motion.div
-                        className="absolute bottom-[-12px] left-1/2 -translate-x-1/2 w-32 h-1 bg-blue-700 rounded-full"
-                        initial={{ scaleX: 0 }}
-                        whileInView={{ scaleX: 1 }}
-                        transition={{ duration: 0.9, ease: 'easeInOut' }}
-                        viewport={{ once: true, amount: 0.8 }}
-                    />
-                </motion.h2>
+                {/* 2. UPDATED: Society Header now has a responsive underline */}
+                <div className="text-center mb-16">
+                    <motion.h2
+                        className="text-4xl font-extrabold text-gray-800 inline-block relative tracking-tight"
+                        initial={{ opacity: 0, y: -20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                        viewport={{ once: true }}
+                    >
+                        {societyNames[societyKey] || societyKey}
+                        <motion.div
+                            className="absolute bottom-[-12px] left-0 w-full h-1 bg-blue-700 rounded-full"
+                            initial={{ scaleX: 0 }}
+                            whileInView={{ scaleX: 1 }}
+                            transition={{ duration: 0.9, ease: 'easeInOut' }}
+                            viewport={{ once: true, amount: 0.8 }}
+                        />
+                    </motion.h2>
+                </div>
                 
                 {/* Members Grid */}
                 <motion.div
@@ -162,13 +165,14 @@ const Execom = () => {
                             onClick={() => handleRedirect(member.link)}
                         >
                             <div className="overflow-hidden h-80 relative">
+                                {/* 3. UPDATED: Removed grayscale effect from images */}
                                 <motion.img
                                     loading="lazy"
                                     width="300"
                                     height="400"
                                     src={`/Execom25/${member.img}`}
                                     alt={member.name}
-                                    className="w-full h-full object-cover object-top transform group-hover:scale-110 grayscale group-hover:grayscale-0 transition-all duration-700 ease-out"
+                                    className="w-full h-full object-cover object-top transform group-hover:scale-110 transition-all duration-700 ease-out"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                             </div>
@@ -185,4 +189,4 @@ const Execom = () => {
   );
 };
 
-export default Execom;
+export default Execom

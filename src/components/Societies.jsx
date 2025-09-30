@@ -56,11 +56,9 @@ const itemVariants = {
 
 const Societies = () => {
   return (
+    // 1. UPDATED: Removed static background to reveal dynamic animated background
     <div className="relative py-24 px-6 md:px-20 lg:px-32 bg-gradient-to-br from-[#f8fbff] to-[#e9f1fb] text-gray-900 overflow-hidden">
       
-      {/* subtle radial background glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(0,102,204,0.07),transparent_60%)] pointer-events-none"></div>
-
       <div className="text-center mb-20 relative z-10">
         <motion.h2
           className="text-5xl font-extrabold text-gray-800 inline-block relative tracking-tight"
@@ -102,7 +100,8 @@ const Societies = () => {
               <motion.img
                 src={society.image}
                 alt={society.name}
-                className="w-full h-full object-cover transform group-hover:scale-110 group-hover:grayscale-0 grayscale transition-all duration-700 ease-out"
+                // 2. UPDATED: Removed grayscale effect
+                className="w-full h-full object-cover transform group-hover:scale-110 transition-all duration-700 ease-out"
                 whileHover={{ rotate: 0.5 }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>

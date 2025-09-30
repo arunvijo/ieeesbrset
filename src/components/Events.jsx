@@ -21,7 +21,7 @@ const itemVariants = {
   },
 };
 
-// --- DATA (Unchanged Upcoming, Updated Past) ---
+// --- DATA ---
 const upcomingEvents = [
   {
     name: 'AI Symposium 2025',
@@ -39,7 +39,6 @@ const upcomingEvents = [
   }
 ];
 
-// Replaced all demo.jpg with relevant, free-to-use images
 const pastEvents = {
   "Student Branch (SB)": [
     { name: "Annual General Meeting 2024", date: "2024-04-02", description: "Reviewing the year's progress and planning for the future.", image: "/Events/AGM.jpg" },
@@ -93,9 +92,6 @@ const pastEvents = {
 const Events = () => {
   return (
     <div className="relative py-24 px-6 md:px-20 lg:px-32 bg-gradient-to-br from-[#f8fbff] to-[#e9f1fb] text-gray-900 overflow-hidden">
-        {/* Note: The <Navbar /> was removed from here because it's handled by the main App Layout, preventing duplicates. */}
-
-        {/* --- STYLED BANNER --- */}
         <div className='relative w-screen h-[400px] -mx-6 md:-mx-20 lg:-mx-32 -mt-24 mb-24 overflow-hidden'>
             <motion.img 
                 src="/banner.png" 
@@ -126,29 +122,32 @@ const Events = () => {
             </div>
         </div>
 
-        {/* --- UPCOMING EVENTS (STYLED) --- */}
+        {/* --- UPCOMING EVENTS --- */}
         <section className='mb-24'>
-            <motion.h2
-                className="text-5xl font-extrabold text-gray-800 inline-block relative tracking-tight mb-20 text-center w-full"
-                initial={{ opacity: 0, y: -20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }}
-            >
-                Upcoming <span className="text-blue-700">Events</span>
-                <motion.div className="absolute bottom-[-12px] left-1/2 -translate-x-1/2 w-48 h-1 bg-blue-700 rounded-full"
-                    initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} transition={{ duration: 0.9, ease: 'easeInOut' }} viewport={{ once: true, amount: 0.8 }}
-                />
-            </motion.h2>
+            {/* 1. FIXED: Header now uses a centering wrapper for a responsive underline */}
+            <div className="text-center mb-20">
+                <motion.h2
+                    className="text-5xl font-extrabold text-gray-800 inline-block relative tracking-tight"
+                    initial={{ opacity: 0, y: -20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }}
+                >
+                    Upcoming <span className="text-blue-700">Events</span>
+                    <motion.div className="absolute bottom-[-12px] left-0 w-full h-1 bg-blue-700 rounded-full"
+                        initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} transition={{ duration: 0.9, ease: 'easeInOut' }} viewport={{ once: true, amount: 0.8 }}
+                    />
+                </motion.h2>
+            </div>
             <motion.div className='grid grid-cols-1 md:grid-cols-2 gap-12' variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
                 {upcomingEvents.map((event, index) => (
                     <motion.div key={index} variants={itemVariants} whileHover={{ y: -8, scale: 1.02 }} className="group bg-white/90 backdrop-blur-sm border border-gray-200 rounded-2xl shadow-md transition-all duration-300 hover:shadow-2xl hover:border-blue-600/60 overflow-hidden">
                         <div className="overflow-hidden h-60 relative">
-                            <motion.img src={event.image} alt={event.name} className="w-full h-full object-cover transform group-hover:scale-110 grayscale group-hover:grayscale-0 transition-all duration-700 ease-out" />
+                            {/* 2. FIXED: Removed grayscale classes */}
+                            <motion.img src={event.image} alt={event.name} className="w-full h-full object-cover transform group-hover:scale-110 transition-all duration-700 ease-out" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         </div>
                         <div className='p-6'>
                             <p className='text-sm text-blue-700 font-semibold mb-2'>{event.date}</p>
                             <h4 className='text-2xl font-bold text-gray-800 mb-3 group-hover:text-blue-700 transition-colors'>{event.name}</h4>
                             <p className='text-gray-600 mb-6 text-sm leading-relaxed'>{event.description}</p>
-                            {/* --- THIS IS THE CHANGED LINE --- */}
                             <Link to={`/event/${index}`} className='inline-block bg-blue-700 text-white px-6 py-2 rounded-lg hover:bg-blue-800 transition shadow-md hover:shadow-lg font-semibold'>
                                 View Details
                             </Link>
@@ -158,17 +157,19 @@ const Events = () => {
             </motion.div>
         </section>
 
-        {/* --- PAST EVENTS (STYLED & CATEGORIZED) --- */}
+        {/* --- PAST EVENTS --- */}
         <section className='mb-16'>
-            <motion.h2
-                className="text-5xl font-extrabold text-gray-800 inline-block relative tracking-tight mb-20 text-center w-full"
-                initial={{ opacity: 0, y: -20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }}
-            >
-                Our <span className="text-blue-700">Past Events</span>
-                <motion.div className="absolute bottom-[-12px] left-1/2 -translate-x-1/2 w-48 h-1 bg-blue-700 rounded-full"
-                    initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} transition={{ duration: 0.9, ease: 'easeInOut' }} viewport={{ once: true, amount: 0.8 }}
-                />
-            </motion.h2>
+            <div className="text-center mb-20">
+                <motion.h2
+                    className="text-5xl font-extrabold text-gray-800 inline-block relative tracking-tight"
+                    initial={{ opacity: 0, y: -20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }}
+                >
+                    Our <span className="text-blue-700">Past Events</span>
+                    <motion.div className="absolute bottom-[-12px] left-0 w-full h-1 bg-blue-700 rounded-full"
+                        initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} transition={{ duration: 0.9, ease: 'easeInOut' }} viewport={{ once: true, amount: 0.8 }}
+                    />
+                </motion.h2>
+            </div>
             {Object.entries(pastEvents).map(([society, events]) => (
                 <div key={society} className='mb-16'>
                     <h3 className='text-3xl font-bold mb-8 text-blue-900 border-b-2 border-blue-200 pb-2'>{society}</h3>
@@ -176,7 +177,8 @@ const Events = () => {
                         {events.map((event, index) => (
                             <motion.div key={index} variants={itemVariants} whileHover={{ y: -8, scale: 1.02 }} className="group bg-white/90 backdrop-blur-sm border border-gray-200 rounded-2xl shadow-md transition-all duration-300 hover:shadow-2xl hover:border-blue-600/60 overflow-hidden">
                                 <div className="overflow-hidden h-52 relative">
-                                    <motion.img src={event.image} alt={event.name} className="w-full h-full object-cover transform group-hover:scale-110 grayscale group-hover:grayscale-0 transition-all duration-700 ease-out" />
+                                    {/* 2. FIXED: Removed grayscale classes */}
+                                    <motion.img src={event.image} alt={event.name} className="w-full h-full object-cover transform group-hover:scale-110 transition-all duration-700 ease-out" />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                                 </div>
                                 <div className='p-5'>

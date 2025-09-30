@@ -12,7 +12,6 @@ const images = [
   '/SbAwards/sba9.jpeg',
 ];
 
-// 1. Updated animation variants to match the 'Societies' component
 // Container animation for staggering effect
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -37,13 +36,10 @@ const SBAchievements = () => {
   const [selectedImg, setSelectedImg] = useState(null);
 
   return (
-    // 2. Applied the same background gradient, padding, and relative positioning
     <div className="relative py-24 px-6 md:px-20 lg:px-32 bg-gradient-to-br from-[#f8fbff] to-[#e9f1fb] text-gray-900 overflow-hidden">
 
-      {/* 3. Added the subtle radial background glow */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(0,102,204,0.07),transparent_60%)] pointer-events-none"></div>
 
-      {/* 4. Updated the header section to match 'Societies' styling */}
       <div className="text-center mb-20 relative z-10">
         <motion.h2
           className="text-5xl font-extrabold text-gray-800 inline-block relative tracking-tight"
@@ -53,6 +49,7 @@ const SBAchievements = () => {
           viewport={{ once: true }}
         >
           SB <span className="text-blue-700">Achievements</span>
+          {/* This underline is already fully responsive and works on all screen sizes */}
           <motion.div
             className="absolute bottom-[-12px] left-0 w-full h-1 bg-blue-700 rounded-full"
             initial={{ scaleX: 0 }}
@@ -66,7 +63,6 @@ const SBAchievements = () => {
         </p>
       </div>
 
-      {/* 5. Updated the grid container to use the new variants and gap */}
       <motion.div
         className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 relative z-10'
         variants={containerVariants}
@@ -75,7 +71,6 @@ const SBAchievements = () => {
         viewport={{ once: true, amount: 0.2 }}
       >
         {images.map((src, idx) => (
-          // 6. Styled each image container as a 'card' with identical animations and hover effects
           <motion.div
             key={idx}
             variants={itemVariants}
@@ -87,8 +82,8 @@ const SBAchievements = () => {
               <motion.img
                 src={src}
                 alt={`Award ${idx + 1}`}
-                // 7. Added grayscale effect on the image to match the 'Societies' hover style
-                className="w-full h-full object-cover transform group-hover:scale-110 group-hover:grayscale-0 grayscale transition-all duration-700 ease-out"
+                // UPDATED: Removed the "grayscale" and "group-hover:grayscale-0" classes
+                className="w-full h-full object-cover transform group-hover:scale-110 transition-all duration-700 ease-out"
               />
                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </div>
@@ -96,7 +91,7 @@ const SBAchievements = () => {
         ))}
       </motion.div>
 
-      {/* Lightbox Modal (unchanged functionality, but benefits from the new aesthetic) */}
+      {/* Lightbox Modal */}
       <AnimatePresence>
         {selectedImg && (
           <motion.div
