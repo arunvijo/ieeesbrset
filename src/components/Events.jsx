@@ -148,9 +148,10 @@ const Events = () => {
                             <p className='text-sm text-blue-700 font-semibold mb-2'>{event.date}</p>
                             <h4 className='text-2xl font-bold text-gray-800 mb-3 group-hover:text-blue-700 transition-colors'>{event.name}</h4>
                             <p className='text-gray-600 mb-6 text-sm leading-relaxed'>{event.description}</p>
-                            <a href={event.registerLink} target="_blank" rel="noopener noreferrer" className='inline-block bg-blue-700 text-white px-6 py-2 rounded-lg hover:bg-blue-800 transition shadow-md hover:shadow-lg font-semibold'>
-                                Register Now
-                            </a>
+                            {/* --- THIS IS THE CHANGED LINE --- */}
+                            <Link to={`/event/${index}`} className='inline-block bg-blue-700 text-white px-6 py-2 rounded-lg hover:bg-blue-800 transition shadow-md hover:shadow-lg font-semibold'>
+                                View Details
+                            </Link>
                         </div>
                     </motion.div>
                 ))}
