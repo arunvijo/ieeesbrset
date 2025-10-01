@@ -57,7 +57,7 @@ const itemVariants = {
 const Societies = () => {
   return (
     // 1. UPDATED: Removed static background to reveal dynamic animated background
-    <div className="relative py-24 px-6 md:px-20 lg:px-32 bg-gradient-to-br from-[#f8fbff] to-[#e9f1fb] text-gray-900 overflow-hidden">
+    <div className="relative py-24 px-6 md:px-20 lg:px-32 bg-[#e9f1fb] text-gray-900 overflow-hidden">
       
       <div className="text-center mb-20 relative z-10">
         <motion.h2

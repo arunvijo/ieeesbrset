@@ -9,13 +9,14 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Execom from './components/Execom';
 import Societies from './components/Societies';
-import StudentAchievements from './components/StudentAchievements';
-import SBAchievements from './components/SBAchievements';
 import Navbar from './components/Navbar';
 import Events from './components/Events';
 import Profile from './components/Profile';
 import EventDetail from './components/EventDetails';
-import Newsletters from './components/Newsletters'; 
+import Newsletters from './components/Newsletters';
+// UPDATED: Import the new unified Announcements component
+import Announcements from './components/Announcements';
+import IEEEMembership from './components/IEEEMembership';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -24,9 +25,10 @@ const Home = () => (
   <>
     <Header />
     <About />
+    <IEEEMembership />
     <Societies />
-    <SBAchievements />
-    <StudentAchievements />
+    {/* UPDATED: Replaced SBAchievements and StudentAchievements with the new Announcements component */}
+    <Announcements />
     <Newsletters />
     <Gallery />
     <Testimonials />
@@ -35,11 +37,14 @@ const Home = () => (
   </>
 );
 
-// Layout component to conditionally apply background
+// Layout component to conditionally apply background (No changes needed here)
 const Layout = ({ children }) => {
   const location = useLocation();
   const noBgPages = ['/events', '/execom'];
-  const isNoBg = noBgPages.includes(location.pathname) ;
+  // A check to see if the current path starts with /event/
+  const isEventDetailPage = location.pathname.startsWith('/event/');
+  const isNoBg = noBgPages.includes(location.pathname) || isEventDetailPage;
+
 
   return (
     <div
@@ -47,7 +52,6 @@ const Layout = ({ children }) => {
       style={
         !isNoBg
           ? {
-              // CHANGED LINE: Added a dark overlay to the background image
               backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)), url('/bg.jpg')",
               backgroundAttachment: 'fixed',
               backgroundSize: 'cover',
@@ -63,6 +67,7 @@ const Layout = ({ children }) => {
   );
 };
 
+// Main App component (No changes needed here)
 const App = () => {
   return (
     <BrowserRouter>

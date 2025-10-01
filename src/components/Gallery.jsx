@@ -49,11 +49,11 @@ const Gallery = () => {
 
   return (
     <div
-      className="relative py-24 px-6 md:px-20 lg:px-32 bg-gradient-to-br from-[#f8fbff] to-[#e9f1fb] text-gray-900 overflow-hidden"
+      className="relative py-24 px-6 md:px-20 lg:px-32 bg-[#e9f1fb] text-gray-900 overflow-hidden"
       id="Gallery"
     >
       {/* Subtle radial background glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(0,102,204,0.07),transparent_60%)] pointer-events-none"></div>
+      {/* <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(0,102,204,0.07),transparent_60%)] pointer-events-none"></div> */}
       
       {/* Header */}
       <div className="text-center mb-12 relative z-10">
