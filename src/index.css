@@ -1,12 +1,12 @@
-/* ❌ REMOVED: The font is now imported in index.html for better performance. */
-/* @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap'); */
+/* ✅ NEW: Import the 'Inter' font directly in the CSS file. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 /* ✅ 1. Tailwind base setup */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* === NEW: Professional Global Styles === */
+/* === Professional Global Styles === */
 
 /* ✅ 2. Smooth Scrolling & Font Smoothing */
 html {
@@ -14,6 +14,7 @@ html {
 }
 
 body {
+  font-family: 'Inter', sans-serif; /* ✅ NEW: Set Inter as the default body font */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #f8fbff;
@@ -28,31 +29,20 @@ body {
   background: #e9f1fb;
 }
 ::-webkit-scrollbar-thumb {
-  background: #00629B; /* ✅ CHANGED: Uses official IEEE Blue */
+  background: #00629B; /* Uses official IEEE Blue */
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #004C7A; /* ✅ CHANGED: Darker IEEE Blue for hover */
+  background: #004C7A; /* Darker IEEE Blue for hover */
 }
 
 /* ✅ 4. Custom Text Selection Color with IEEE branding */
 ::selection {
-  background-color: #00629B; /* ✅ CHANGED: Uses official IEEE Blue */
+  background-color: #00629B; /* Uses official IEEE Blue */
   color: #ffffff;
 }
 
-
 /* === Existing & Unchanged Styles === */
-
-/* ❌ REMOVED: This is now handled by your tailwind.config.js for better consistency. */
-/*
-* {
-  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-*/
 
 /* ✅ 5. Register local SpecialElite font */
 @font-face {

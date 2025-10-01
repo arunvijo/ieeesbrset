@@ -74,7 +74,7 @@ const Header = () => {
             transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
         />
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black bg-opacity-70 z-0"></div>
+        <div className="absolute inset-0 bg-black bg-opacity-75 z-0"></div>
 
         {/* Hero Content */}
         <motion.div

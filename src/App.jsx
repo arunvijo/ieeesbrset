@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 
+// ... (all your other component imports remain the same)
 import Header from './components/Header';
 import About from './components/About';
 import Gallery from './components/Gallery';
@@ -14,9 +15,7 @@ import Events from './components/Events';
 import Profile from './components/Profile';
 import EventDetail from './components/EventDetails';
 import Newsletters from './components/Newsletters';
-// UPDATED: Import the new unified Announcements component
 import Announcements from './components/Announcements';
-import IEEEMembership from './components/IEEEMembership';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -25,9 +24,7 @@ const Home = () => (
   <>
     <Header />
     <About />
-    <IEEEMembership />
     <Societies />
-    {/* UPDATED: Replaced SBAchievements and StudentAchievements with the new Announcements component */}
     <Announcements />
     <Newsletters />
     <Gallery />
@@ -37,14 +34,16 @@ const Home = () => (
   </>
 );
 
-// Layout component to conditionally apply background (No changes needed here)
+// Layout component to conditionally apply background
 const Layout = ({ children }) => {
   const location = useLocation();
   const noBgPages = ['/events', '/execom'];
-  // A check to see if the current path starts with /event/
-  const isEventDetailPage = location.pathname.startsWith('/event/');
-  const isNoBg = noBgPages.includes(location.pathname) || isEventDetailPage;
 
+  // ❌ REMOVED: This line was incorrectly hiding the background on event detail pages.
+  // const isEventDetailPage = location.pathname.startsWith('/event/');
+  
+  // ✅ CHANGED: Simplified the logic to only check the noBgPages array.
+  const isNoBg = noBgPages.includes(location.pathname);
 
   return (
     <div
@@ -67,7 +66,6 @@ const Layout = ({ children }) => {
   );
 };
 
-// Main App component (No changes needed here)
 const App = () => {
   return (
     <BrowserRouter>

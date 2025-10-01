@@ -101,7 +101,7 @@ const Execom = () => {
 
   return (
     // 1. UPDATED: Removed the static gradient to reveal the dynamic animated background
-    <div className="relative py-24 px-6 md:px-20 lg:px-32 text-gray-900 overflow-hidden">
+    <div className="relative py-24 px-6 md:px-20 lg:px-32 bg-[#e9f1fb] text-gray-900 overflow-hidden">
         {/* Banner */}
         <div className='relative w-screen h-[400px] -mx-6 md:-mx-20 lg:-mx-32 -mt-24 mb-24 overflow-hidden'>
             <img src="/banner2.JPG" alt="Execom Banner" className="absolute inset-0 w-full h-full object-cover" />

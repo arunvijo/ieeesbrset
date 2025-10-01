@@ -27,21 +27,21 @@ const upcomingEvents = [
     name: 'AI Symposium 2025',
     date: 'October 15, 2025',
     description: 'A deep dive into the future of Artificial Intelligence, featuring talks from industry experts and IEEE researchers.',
-    image: 'https://images.unsplash.com/photo-1534723452862-4c874018d66d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1170&q=80', // Futuristic AI conference
     registerLink: 'https://forms.gle/kHf5oDeBJhGssJhu8'
   },
   {
     name: 'TechHack 2025',
     date: 'November 01, 2025',
     description: 'A 48-hour hackathon powered by IEEE, bringing together student developers, designers, and innovators.',
-    image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+    image: 'https://images.unsplash.com/photo-1522199710521-72d69614c702?auto=format&fit=crop&w=1170&q=80', // Team hackathon scene
     registerLink: 'https://forms.gle/kHf5oDeBJhGssJhu8'
   }
 ];
 
+
 const pastEvents = {
   "Student Branch (SB)": [
-    { name: "Annual General Meeting 2024", date: "2024-04-02", description: "Reviewing the year's progress and planning for the future.", image: "/Events/AGM.jpg" },
     { name: "DEBAITE", date: "2024-11-11", description: "An exciting debate competition for engineering students.", image: "/Events/DebAIte.jpg" },
     { name: "Game Jam", date: "2024-09-29", description: "A multi-day event focused on collaborative game development.", image: "/Events/GameJam.jpg" },
     { name: "Learn From Scratch", date: "2024-09-29", description: "A foundational workshop for beginners on key tech skills.", image: "/Events/Scratch.jpg" },
@@ -91,7 +91,7 @@ const pastEvents = {
 
 const Events = () => {
   return (
-    <div className="relative py-24 px-6 md:px-20 lg:px-32 bg-gradient-to-br from-[#f8fbff] to-[#e9f1fb] text-gray-900 overflow-hidden">
+    <div className="relative py-24 px-6 md:px-20 lg:px-32 bg-[#e9f1fb] text-gray-900 overflow-hidden">
         <div className='relative w-screen h-[400px] -mx-6 md:-mx-20 lg:-mx-32 -mt-24 mb-24 overflow-hidden'>
             <motion.img 
                 src="/banner.png" 
