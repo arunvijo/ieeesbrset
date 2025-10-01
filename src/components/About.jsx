@@ -61,23 +61,25 @@ const About = () => {
       >
         {/* 2. UPDATED: Header text and accent colors adjusted for dark background */}
         <div className="text-center mb-16">
-          <motion.h2
-            className="text-5xl font-extrabold text-white inline-block relative tracking-tight"
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            About <span className="text-blue-500">RSET SB</span>
-            <motion.div
-              className="absolute bottom-[-12px] left-1/2 -translate-x-1/2 w-32 h-1 bg-blue-500 rounded-full"
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              transition={{ duration: 0.9, ease: 'easeInOut' }}
-              viewport={{ once: true, amount: 0.8 }}
-            />
-          </motion.h2>
-        </div>
+  <motion.h2
+    className="text-5xl md:text-6xl font-extrabold text-white inline-block relative tracking-tight"
+    initial={{ opacity: 0, y: -20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8 }}
+    viewport={{ once: true }}
+  >
+    About <span className="text-blue-500">RSET SB</span>
+    {/* ✅ Responsive underline */}
+    <motion.div
+      className="absolute left-0 bottom-[-8px] h-[3px] bg-blue-500 w-full rounded-full origin-left"
+      initial={{ scaleX: 0 }}
+      whileInView={{ scaleX: 1 }}
+      transition={{ duration: 0.9, ease: "easeInOut" }}
+      viewport={{ once: true, amount: 0.8 }}
+    />
+  </motion.h2>
+</div>
+
 
         <motion.div 
           className='flex flex-col lg:flex-row items-center gap-12 lg:gap-16'

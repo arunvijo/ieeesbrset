@@ -66,26 +66,28 @@ const Announcements = () => {
 
       {/* --- Section Header --- */}
       <div className="text-center mb-16 relative z-10">
-        <motion.h2
-          className="text-5xl font-extrabold text-gray-800 inline-block relative tracking-tight"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          Our <span className="text-blue-700">Announcements</span>
-          <motion.div
-            className="absolute bottom-[-12px] left-0 w-full h-1 bg-blue-700 rounded-full"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            transition={{ duration: 0.9, ease: 'easeInOut' }}
-            viewport={{ once: true, amount: 0.8 }}
-          />
-        </motion.h2>
-        <p className="text-gray-600 mt-6 max-w-2xl mx-auto text-lg">
-          Celebrating the collective milestones of our Student Branch and the outstanding achievements of our individual members.
-        </p>
-      </div>
+  <motion.h2
+    className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-800 inline-block relative tracking-tight"
+    initial={{ opacity: 0, y: -20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8 }}
+    viewport={{ once: true }}
+  >
+    Our <span className="text-blue-700">Announcements</span>
+    {/* ✅ Responsive underline */}
+    <motion.div
+      className="absolute bottom-[-8px] left-0 w-full h-[3px] bg-blue-700 rounded-full origin-left"
+      initial={{ scaleX: 0 }}
+      whileInView={{ scaleX: 1 }}
+      transition={{ duration: 0.9, ease: "easeInOut" }}
+      viewport={{ once: true, amount: 0.8 }}
+    />
+  </motion.h2>
+
+  <p className="text-gray-600 mt-6 max-w-2xl mx-auto text-lg">
+    Celebrating the collective milestones of our Student Branch and the outstanding achievements of our individual members.
+  </p>
+</div>
 
       {/* --- Animated Tab Switcher --- */}
       <div className="flex justify-center mb-16 relative z-10">
