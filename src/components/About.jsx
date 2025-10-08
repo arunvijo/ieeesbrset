@@ -89,16 +89,19 @@ const About = () => {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {/* Image Section */}
-          <motion.div variants={itemVariants} className="w-full lg:w-1/2 flex-shrink-0">
-            <img
-              src={'src/assets/title.jpeg'} 
-              alt="IEEE RSET Student Branch"
-              className="w-full h-auto rounded-xl shadow-lg object-cover"
-            />
-          </motion.div>
+<motion.div variants={itemVariants} className="w-full lg:w-1/2 flex-shrink-0">
 
-          {/* Text and Stats Section */}
+            <img
+
+              src={'/title.jpeg'}
+
+              alt="IEEE RSET Student Branch"
+
+              className="w-full h-auto rounded-xl shadow-lg object-cover"
+
+            />
+
+          </motion.div>
           <motion.div className='flex flex-col justify-center lg:w-1/2' variants={itemVariants}>
             <div className='grid grid-cols-2 gap-8 mb-8'>
               {[
