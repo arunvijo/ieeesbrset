@@ -13,7 +13,7 @@ const studentImages = [
   '/StudentAwards/sa22.jpeg.jpeg', '/StudentAwards/sa23.jpeg.jpeg',
   '/StudentAwards/sa24.jpeg.jpeg','/StudentAwards/sa1.jpeg', 
   '/StudentAwards/sa2.jpeg', '/StudentAwards/sa3.jpeg',
-  '/StudentAwards/sa4.jpeg',
+ 
 ];
 
 // --- ANIMATION VARIANTS ---
