@@ -9,9 +9,9 @@ const sbImages = [
 ];
 
 const studentImages = [
-  '/StudentAwards/sa20.jpeg.jpeg', '/StudentAwards/sa21.jpeg.jpeg',
-  '/StudentAwards/sa22.jpeg.jpeg', '/StudentAwards/sa23.jpeg.jpeg',
-  '/StudentAwards/sa24.jpeg.jpeg','/StudentAwards/sa17.jpeg', 
+  '/StudentAwards/sa20.jpeg', '/StudentAwards/sa21.jpeg',
+  '/StudentAwards/sa22.jpeg', '/StudentAwards/sa23.jpeg',
+  '/StudentAwards/sa24.jpeg','/StudentAwards/sa17.jpeg', 
   '/StudentAwards/sa18.jpeg', '/StudentAwards/sa19.jpeg',
  
 ];
