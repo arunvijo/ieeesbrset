@@ -3,8 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 // --- Data for the two galleries ---
 const sbImages = [
-  '/SbAwards/sba8.jpeg', '/SbAwards/sba9.jpeg',
-   '/SbAwards/sba7.jpeg',  '/SbAwards/sba6.jpeg'
 ];
 
 const studentImages = [
