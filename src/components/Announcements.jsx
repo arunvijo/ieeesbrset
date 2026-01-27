@@ -3,17 +3,16 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 // --- Data for the two galleries ---
 const sbImages = [
-  '/SbAwards/sba2.jpeg', '/SbAwards/sba3.jpeg', '/SbAwards/sba4.png',
-  '/SbAwards/sba5.jpeg', '/SbAwards/sba6.jpeg', '/SbAwards/sba7.jpeg',
-  '/SbAwards/sba8.jpeg', '/SbAwards/sba9.jpeg',
+  // '/SbAwards/sba2.jpeg', '/SbAwards/sba3.jpeg', '/SbAwards/sba4.png',
+  // '/SbAwards/sba5.jpeg', '/SbAwards/sba6.jpeg', '/SbAwards/sba7.jpeg',
+  // '/SbAwards/sba8.jpeg', '/SbAwards/sba9.jpeg',
+   '/StudentAwards/sa24.jpeg.jpeg'
 ];
 
 const studentImages = [
   '/StudentAwards/sa20.jpeg.jpeg', '/StudentAwards/sa21.jpeg.jpeg',
   '/StudentAwards/sa22.jpeg.jpeg', '/StudentAwards/sa23.jpeg.jpeg',
-  '/StudentAwards/sa24.jpeg.jpeg','/StudentAwards/sa1.jpeg', 
-  '/StudentAwards/sa2.jpeg', '/StudentAwards/sa3.jpeg',
-  '/StudentAwards/sa4.jpeg',
+ 
 ];
 
 // --- ANIMATION VARIANTS ---
@@ -50,14 +49,16 @@ const AwardCard = ({ src, alt, onClick, layoutId }) => (
   <motion.div
     variants={itemVariants}
     whileHover={{ y: -6 }}
-    className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200 cursor-pointer"
+    className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200 cursor-pointer h-full"
     onClick={onClick}
   >
-    <div className="aspect-[4/3] overflow-hidden">
+    {/* ✅ CHANGED: Removed 'aspect-[4/3]' to prevent cropping */}
+    <div className="overflow-hidden">
       <motion.img
         src={src}
         alt={alt}
-        className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 ease-out"
+        // ✅ CHANGED: Replaced 'h-full object-cover' with 'h-auto block' to show full image content
+        className="w-full h-auto block transform group-hover:scale-105 transition-transform duration-500 ease-out"
         layoutId={layoutId}
       />
     </div>
@@ -102,8 +103,9 @@ const Achievements = () => {
       </div>
 
       {/* --- Simplified Random Image Gallery --- */}
+      {/* ✅ OPTIONAL: Added 'items-start' to align cards of varying heights nicely */}
       <motion.div
-        className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-7xl mx-auto"
+        className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-7xl mx-auto items-start"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
