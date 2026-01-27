@@ -6,12 +6,13 @@ const sbImages = [
   // '/SbAwards/sba2.jpeg', '/SbAwards/sba3.jpeg', '/SbAwards/sba4.png',
   // '/SbAwards/sba5.jpeg', '/SbAwards/sba6.jpeg', '/SbAwards/sba7.jpeg',
   // '/SbAwards/sba8.jpeg', '/SbAwards/sba9.jpeg',
+  '/StudentAwards/sa24.jpeg'
 ];
 
 const studentImages = [
-  '/StudentAwards/sa20.jpeg.jpeg', '/StudentAwards/sa21.jpeg.jpeg',
-  '/StudentAwards/sa22.jpeg.jpeg', '/StudentAwards/sa23.jpeg.jpeg',
-  '/StudentAwards/sa24.jpeg.jpeg'
+  '/StudentAwards/sa20.jpeg', '/StudentAwards/sa21.jpeg',
+  '/StudentAwards/sa22.jpeg', '/StudentAwards/sa23.jpeg',
+  
   // '/StudentAwards/sa2.jpeg', '/StudentAwards/sa3.jpeg',
   // '/StudentAwards/sa4.jpeg',
 ];
