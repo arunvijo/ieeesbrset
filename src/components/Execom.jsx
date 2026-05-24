@@ -66,7 +66,7 @@ const Execom = () => {
             animate={{ opacity: 1, y: 0 }} 
             transition={{ duration: 0.5 }}
           >
-            Executive Committee <span className="hero-title-accent">2025</span>
+            Executive Committee <span className="hero-title-accent">2026</span>
           </motion.h1>
           <motion.p 
             className="hero-subtitle" 
