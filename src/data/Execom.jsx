@@ -13,10 +13,10 @@ export const societies = {
   SB: [
     { name: "Dr. Elizabeth Rita Samuel", position: "Student Branch Counselor", img: "DR ELIZABETH RITA SAMUEL.jpg", link: "elizabeth" },
     { name: "Pooja S Nair", position: "IEEE Student Branch Chair", img: "POOJA S NAIR.JPG", link: "pooja" },
-    { name: "Krishnapriya M", position: "IEEE Student Branch Vice Chair", img: "krishnapriya m.jpg", link: "Krishnapriya" },
+    { name: "Krishnapriya M", position: "IEEE Student Branch Vice Chair", img: "krishnapriya_m.jpg", link: "Krishnapriya" },
     { name: "Kriselle Thomas", position: "Secretary", img: "kriselle_thomas.png", link: "kriselle" },
     { name: "Michal Mathew", position: "Treasurer", img: "MICHAL MATHEW.jpg", link: "MICHAL" },
-    { name: "Adriel Bobby", position: "Technical Coordinator", img: "ADRIEL BOBBY.JPG", link: "adriel" },
+    { name: "Adriel Bobby", position: "Technical Coordinator", img: "adriel_bobby.JPG", link: "adriel" },
     { name: "Justin Joven", position: "Electronic Communications Coordinator", img: "JUSTIN JOVEN.jpg", link: "justin" },
     { name: "Aleena Anie Shibu", position: "Membership Development Coordinator", img: "Aleena Anie Shibu.jpg", link: "aleena" },
     { name: "Athulya Aravindhakshan", position: "Membership Development Coordinator", img: "Athulya Aravindhakshan_.jpg", link: "athulya" },
